@@ -8,15 +8,16 @@
 using namespace std;
 const GLint WIDTH = 800, HEIGHT = 600;
 
-GLuint VAO, VBO, shader;
+GLuint VAO, VBO, shader, uniformXMove;
 
 // vertex shader
 static const char* vShader = "														\n\
 #version 330																		\n\
 layout (location = 0) in vec3 pos;													\n\
+uniform float xMove;																	\n\
 void main()																			\n\
 {																					\n\
-	gl_Position = vec4(pos.x, pos.y, pos.z,1.0);									\n\
+	gl_Position = vec4(0.4f *pos.x + xMove, 0.4f *pos.y, pos.z,1.0);									\n\
 }																					\n\
 ";
 // fragment shader
@@ -28,6 +29,11 @@ void main()																			\n\
 	color = vec4(1.0, 0.0, 0.0,1.0);												\n\
 }																					\n\
 ";
+bool direction = true;
+float triOffset = 0.0f;
+float triMaxOffset = 0.7f;
+float triIncrement = 0.005f;
+
 void AddShader(GLuint theProgram, const char * shaderCode, GLenum shaderType) 
 {
 	GLuint theShader = glCreateShader(shaderType);
@@ -84,6 +90,8 @@ void CompileShader()
 		glGetProgramInfoLog(shader, sizeof(eLog), NULL, eLog);
 		cout << "Error validating program : " << eLog << endl;
 	}
+
+	uniformXMove = glGetUniformLocation(shader, "xMove");
 }
 void CreateTriangle()
 {
@@ -165,11 +173,24 @@ int main()
 		// Get + Handle input events
 		glfwPollEvents();
 
+		if (direction) {
+			triOffset += triIncrement;
+		}
+		else {
+			triOffset -= triIncrement;
+		}
+		if (abs(triOffset) >= triMaxOffset) 
+		{
+			direction = !direction;
+		}
 		// Clear window
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		glUseProgram(shader);
+
+		glUniform1f(uniformXMove, triOffset);
+
 		glBindVertexArray(VAO);
 		glDrawArrays(GL_TRIANGLES,0,3);
 		glBindVertexArray(0);
