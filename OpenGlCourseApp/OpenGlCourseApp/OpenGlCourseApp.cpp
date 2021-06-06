@@ -5,10 +5,15 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include<string>
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
 using namespace std;
 const GLint WIDTH = 800, HEIGHT = 600;
+float uniformXMove;
 
-GLuint VAO, VBO, shader, uniformXMove;
+GLuint VAO, VBO, shader, uniformXModel;
 
 // vertex shader
 static const char* vShader = "														\n\
