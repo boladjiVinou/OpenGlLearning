@@ -36,5 +36,8 @@
     <ClCompile Include="HelloTriangle_1.cpp">
       <Filter>Source Files\HelloTriangleExercices</Filter>
     </ClCompile>
+    <ClCompile Include="HelloTriangle_2.cpp">
+      <Filter>Source Files\HelloTriangleExercices</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
