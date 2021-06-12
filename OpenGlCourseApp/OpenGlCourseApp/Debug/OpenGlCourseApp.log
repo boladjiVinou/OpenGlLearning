@@ -1,2 +1,9 @@
-﻿  HelloRectangle.cpp
+﻿  glad.c
+  HelloRectangle.cpp
+  HelloTriangle.cpp
+  HelloTriangle_1.cpp
+  HelloWindow.cpp
+  main.cpp
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   OpenGlCourseApp.vcxproj -> D:\OPENGL LEARNING\OpenGlCourseApp\Debug\OpenGlCourseApp.exe

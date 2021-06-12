@@ -1,9 +1,10 @@
 #include <iostream>
-//#include "HelloTriangle.cpp"
-#include "HelloRectangle.cpp"
+//#include "HelloTriangle_1.cpp"
+//#include "HelloRectangle.cpp"
+#include "HelloTriangle_1.cpp"
 int main() 
 {
-	HelloRectangle hello;
+	HelloTriangle_1 hello;
 	hello.run();
 	return 0;
 }
