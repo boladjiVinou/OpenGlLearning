@@ -179,6 +179,7 @@
     <ClCompile Include="HelloTriangle_2.cpp" />
     <ClCompile Include="HelloWindow.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ShaderExample.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

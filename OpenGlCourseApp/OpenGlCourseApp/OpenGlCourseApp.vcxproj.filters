@@ -13,34 +13,43 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\HelloTriangleExercices">
+    <Filter Include="Source Files\HelloTriangle">
+      <UniqueIdentifier>{0ef9dc57-357d-4a91-a04d-af29893a3b2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\HelloTriangle\HelloTriangleExercices">
       <UniqueIdentifier>{9120cba1-7a57-4b38-8547-4863ddbd039f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shaders">
+      <UniqueIdentifier>{5c3b690d-2237-42f7-bfd6-b58432183526}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\External Libs\glad\src\glad.c">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="HelloTriangle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HelloRectangle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HelloWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="HelloTriangle_1.cpp">
-      <Filter>Source Files\HelloTriangleExercices</Filter>
+      <Filter>Source Files\HelloTriangle\HelloTriangleExercices</Filter>
     </ClCompile>
     <ClCompile Include="HelloTriangle_2.cpp">
-      <Filter>Source Files\HelloTriangleExercices</Filter>
+      <Filter>Source Files\HelloTriangle\HelloTriangleExercices</Filter>
     </ClCompile>
     <ClCompile Include="HelloTriangle_3.cpp">
-      <Filter>Source Files\HelloTriangleExercices</Filter>
+      <Filter>Source Files\HelloTriangle\HelloTriangleExercices</Filter>
+    </ClCompile>
+    <ClCompile Include="HelloWindow.cpp">
+      <Filter>Source Files\HelloTriangle</Filter>
+    </ClCompile>
+    <ClCompile Include="HelloTriangle.cpp">
+      <Filter>Source Files\HelloTriangle</Filter>
+    </ClCompile>
+    <ClCompile Include="HelloRectangle.cpp">
+      <Filter>Source Files\HelloTriangle</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderExample.cpp">
+      <Filter>Source Files\Shaders</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
