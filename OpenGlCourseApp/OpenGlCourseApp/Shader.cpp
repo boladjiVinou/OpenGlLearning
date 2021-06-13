@@ -50,6 +50,7 @@ public:
 				infoLog << std::endl;
 		};
 	}
+	// attach shader to program and destroy it
 	void AttachShaderTo(unsigned int programId) 
 	{
 		glAttachShader(programId, _shaderId);
@@ -63,6 +64,10 @@ public:
 			glGetProgramInfoLog(programId, 512, NULL, infoLog);
 			std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" <<
 				infoLog << std::endl;
+		}
+		else 
+		{
+			glDeleteShader(_shaderId);
 		}
 	}
 	// utility uniform functions
