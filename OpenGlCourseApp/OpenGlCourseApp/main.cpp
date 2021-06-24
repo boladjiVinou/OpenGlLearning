@@ -5,10 +5,10 @@
 //#include "HelloTriangle_2.cpp"
 //#include "HelloTriangle_3.cpp"
 //#include "ShaderExample.cpp"
-#include "ShaderExercice1.cpp"
+#include "ShaderExercice2.cpp"
 int main() 
 {
-	ShaderExercice1 example;
+	ShaderExercice2 example;
 	example.run();
 	return 0;
 }

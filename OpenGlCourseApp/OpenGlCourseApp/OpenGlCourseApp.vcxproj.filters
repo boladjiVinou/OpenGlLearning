@@ -60,5 +60,8 @@
     <ClCompile Include="ShaderExercice1.cpp">
       <Filter>Source Files\Shaders\ShaderExercices</Filter>
     </ClCompile>
+    <ClCompile Include="ShaderExercice2.cpp">
+      <Filter>Source Files\Shaders\ShaderExercices</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
