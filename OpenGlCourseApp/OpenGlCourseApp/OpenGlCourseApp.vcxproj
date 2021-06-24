@@ -183,6 +183,7 @@
     <ClCompile Include="ShaderExample.cpp" />
     <ClCompile Include="ShaderExercice1.cpp" />
     <ClCompile Include="ShaderExercice2.cpp" />
+    <ClCompile Include="ShaderExercice3.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

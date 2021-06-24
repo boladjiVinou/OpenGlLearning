@@ -6,13 +6,15 @@
   HelloTriangle_2.cpp
   HelloWindow.cpp
   main.cpp
-d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice2.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice3.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Shader.cpp
   ShaderExample.cpp
   ShaderExercice1.cpp
 d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice1.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   ShaderExercice2.cpp
 d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice2.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  ShaderExercice3.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice3.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Generating Code...
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   OpenGlCourseApp.vcxproj -> D:\OPENGL LEARNING\OpenGlCourseApp\Debug\OpenGlCourseApp.exe
