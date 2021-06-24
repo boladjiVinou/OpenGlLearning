@@ -5,6 +5,7 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+using namespace std;
 class Shader
 {
 public:
@@ -39,6 +40,23 @@ public:
 		int success;
 		char infoLog[512];
 		_shaderId = glCreateShader(type);
+		glShaderSource(_shaderId, 1, &shaderCodePointer, NULL);
+		glCompileShader(_shaderId);
+		// print compile errors if any
+		glGetShaderiv(_shaderId, GL_COMPILE_STATUS, &success);
+		if (!success)
+		{
+			glGetShaderInfoLog(_shaderId, 512, NULL, infoLog);
+			std::cout << "ERROR::SHADER::COMPILATION_FAILED\n" <<
+				infoLog << std::endl;
+		};
+	}
+	Shader(string shaderContent, GLenum type) 
+	{
+		int success;
+		char infoLog[512];
+		_shaderId = glCreateShader(type);
+		const char* shaderCodePointer = shaderContent.c_str();
 		glShaderSource(_shaderId, 1, &shaderCodePointer, NULL);
 		glCompileShader(_shaderId);
 		// print compile errors if any

@@ -22,6 +22,9 @@
     <Filter Include="Source Files\Shaders">
       <UniqueIdentifier>{5c3b690d-2237-42f7-bfd6-b58432183526}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Shaders\ShaderExercices">
+      <UniqueIdentifier>{0cb87ef2-3f0a-48fe-99be-1a9a6434fd35}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\External Libs\glad\src\glad.c">
@@ -50,6 +53,12 @@
     </ClCompile>
     <ClCompile Include="ShaderExample.cpp">
       <Filter>Source Files\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Source Files\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderExercice1.cpp">
+      <Filter>Source Files\Shaders\ShaderExercices</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
