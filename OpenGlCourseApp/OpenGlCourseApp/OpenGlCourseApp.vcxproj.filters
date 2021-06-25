@@ -25,6 +25,9 @@
     <Filter Include="Source Files\Shaders\ShaderExercices">
       <UniqueIdentifier>{0cb87ef2-3f0a-48fe-99be-1a9a6434fd35}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Textures">
+      <UniqueIdentifier>{9a83fe7b-f568-4ba4-b72b-476a651c212a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\External Libs\glad\src\glad.c">
@@ -66,5 +69,16 @@
     <ClCompile Include="ShaderExercice3.cpp">
       <Filter>Source Files\Shaders\ShaderExercices</Filter>
     </ClCompile>
+    <ClCompile Include="TextureExample.cpp">
+      <Filter>Source Files\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="stb_image.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stb_image.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -6,9 +6,10 @@
 //#include "HelloTriangle_3.cpp"
 //#include "ShaderExample.cpp"
 #include "ShaderExercice3.cpp"
+#include "TextureExample.cpp"
 int main() 
 {
-	ShaderExercice3 example;
+	TextureExample example;
 	example.run();
 	return 0;
 }

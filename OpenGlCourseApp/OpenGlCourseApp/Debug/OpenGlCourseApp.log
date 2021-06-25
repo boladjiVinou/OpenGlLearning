@@ -15,6 +15,8 @@ d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice1.cpp(5): warni
 d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice2.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   ShaderExercice3.cpp
 d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice3.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  stb_image.cpp
+  TextureExample.cpp
   Generating Code...
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   OpenGlCourseApp.vcxproj -> D:\OPENGL LEARNING\OpenGlCourseApp\Debug\OpenGlCourseApp.exe
