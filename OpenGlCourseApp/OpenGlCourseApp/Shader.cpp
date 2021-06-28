@@ -101,5 +101,9 @@ public:
 	{
 		glUniform1f(glGetUniformLocation(_programId, name.c_str()), value);
 	}
+	void useProgram()
+	{
+		glUseProgram(_programId);
+	}
 };
 #endif

@@ -18,16 +18,19 @@ class TextureExample {
 		" ourColor =gl_Position;\n"
 		" TexCoord = aTexCoord;\n"
 		"}\0";
-	//texture(ourTexture, TexCoord)
+
 	const string fragmentShaderSource = "#version 330 core\n"
 		"out vec4 FragColor;\n"
 		"in vec4 ourColor;"
 		"in vec2 TexCoord;\n"
 		//"uniform vec4 ourColor;\n"
-		"uniform sampler2D ourTexture;"
+		"uniform sampler2D texture1;"
+		"uniform sampler2D texture2;"
 		"void main()\n"
 		"{\n"
-		"	FragColor =texture(ourTexture, TexCoord);\n"
+		"	FragColor = mix( texture(texture1, TexCoord),"
+		"					 texture(texture2, TexCoord),"
+		"							 0.2);\n"
 		"}\0";
 
 
@@ -74,7 +77,7 @@ public:
 			-0.5f, -0.5f, 0.0f,		0.0f,0.0f, // bottom left
 			-0.5f, 0.5f, 0.0f,		0.0f,1.0f  // top leftv
 		};
-		unsigned int indices[] = { 0 , 1 ,3,3,2,1 };
+		unsigned int indices[] = { 0, 1, 3, 3, 2, 1 };
 		unsigned int VAO;
 		glGenVertexArrays(1, &VAO);
 		glBindVertexArray(VAO);
@@ -97,18 +100,19 @@ public:
 
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 5* sizeof(float),
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float),
 			(void*)(3 * sizeof(float)));
 		glEnableVertexAttribArray(2);
 
 		int width, height, nrChannels;
+		stbi_set_flip_vertically_on_load(true);
 		unsigned char *data = stbi_load("./Textures/Stone.jpg", &width, &height,
 			&nrChannels, 0);
-		unsigned int texture;
+		unsigned int texture1;
 		if (data) 
 		{
-			glGenTextures(1, &texture);
-			glBindTexture(GL_TEXTURE_2D, texture);
+			glGenTextures(1, &texture1);
+			glBindTexture(GL_TEXTURE_2D, texture1);
 			// set the texture wrapping/filtering options (on currently bound texture)
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -121,18 +125,54 @@ public:
 		}
 		else
 		{
-			std::cout << "Failed to load texture" << std::endl;
+			std::cout << "Failed to load stone texture" << std::endl;
 		}
-		fragmentShader.setInt("ourTexture", texture);
+		
+		unsigned int texture2;
+		data = nullptr;
+		width = 0;
+		height = 0;
+		nrChannels=0;
+		data = stbi_load("./Textures/awesomeface.png", &width, &height,
+			&nrChannels, 0);
+		if (data)
+		{
+			glGenTextures(1, &texture2);
+			glBindTexture(GL_TEXTURE_2D, texture2);
+			// set the texture wrapping/filtering options (on currently bound texture)
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGBA,
+				GL_UNSIGNED_BYTE, data);
+			glGenerateMipmap(GL_TEXTURE_2D);
+			stbi_image_free(data);
+		}
+		else
+		{
+			std::cout << "Failed to load face texture" << std::endl;
+		}
+		fragmentShader.useProgram();
+		fragmentShader.setInt("texture1", 0);
+		fragmentShader.setInt("texture2", 1);
+
 		while (!glfwWindowShouldClose(window))
 		{
 			processInput(window);
 			// rendering commands here
 			glClear(GL_COLOR_BUFFER_BIT);
+
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, texture1);
+			glActiveTexture(GL_TEXTURE1);
+			glBindTexture(GL_TEXTURE_2D, texture2);
+
 			glUseProgram(shaderProgram);
-			glBindTexture(GL_TEXTURE_2D, texture);
+
 			glBindVertexArray(VAO);
 			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
 			glfwSwapBuffers(window);
 			glfwPollEvents();
 		}
