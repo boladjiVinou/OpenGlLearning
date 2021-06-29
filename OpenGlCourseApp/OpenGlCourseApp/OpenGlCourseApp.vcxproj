@@ -186,6 +186,9 @@
     <ClCompile Include="ShaderExercice3.cpp" />
     <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="TextureExample.cpp" />
+    <ClCompile Include="TextureExercice1.cpp" />
+    <ClCompile Include="TextureExercice2.cpp" />
+    <ClCompile Include="TextureExercice3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stb_image.h" />

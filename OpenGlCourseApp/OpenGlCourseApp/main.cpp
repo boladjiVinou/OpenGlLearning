@@ -5,11 +5,12 @@
 //#include "HelloTriangle_2.cpp"
 //#include "HelloTriangle_3.cpp"
 //#include "ShaderExample.cpp"
-#include "ShaderExercice3.cpp"
-#include "TextureExample.cpp"
+//#include "ShaderExercice3.cpp"
+//#include "TextureExample.cpp"
+#include "TextureExercice3.cpp"
 int main() 
 {
-	TextureExample example;
+	TextureExercice3 example;
 	example.run();
 	return 0;
 }

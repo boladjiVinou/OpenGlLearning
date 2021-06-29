@@ -28,6 +28,9 @@
     <Filter Include="Source Files\Textures">
       <UniqueIdentifier>{9a83fe7b-f568-4ba4-b72b-476a651c212a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Textures\TexturesExercices">
+      <UniqueIdentifier>{7467b776-24a2-445c-8bd2-758e924e7f5b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\External Libs\glad\src\glad.c">
@@ -74,6 +77,15 @@
     </ClCompile>
     <ClCompile Include="stb_image.cpp">
       <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureExercice1.cpp">
+      <Filter>Source Files\Textures\TexturesExercices</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureExercice2.cpp">
+      <Filter>Source Files\Textures\TexturesExercices</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureExercice3.cpp">
+      <Filter>Source Files\Textures\TexturesExercices</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
