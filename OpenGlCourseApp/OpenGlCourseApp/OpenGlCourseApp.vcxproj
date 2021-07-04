@@ -190,6 +190,7 @@
     <ClCompile Include="TextureExercice2.cpp" />
     <ClCompile Include="TextureExercice3.cpp" />
     <ClCompile Include="TransformationExample.cpp" />
+    <ClCompile Include="TransformationExercice.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stb_image.h" />

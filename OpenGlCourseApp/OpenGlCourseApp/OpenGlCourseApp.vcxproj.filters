@@ -34,6 +34,9 @@
     <Filter Include="Source Files\Transformations">
       <UniqueIdentifier>{49883640-a9ed-4888-b28d-055eec574c5a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Transformations\TransformationsExercices">
+      <UniqueIdentifier>{e6ae918b-6405-4d0d-95cb-cf8a492f6f41}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\External Libs\glad\src\glad.c">
@@ -92,6 +95,9 @@
     </ClCompile>
     <ClCompile Include="TransformationExample.cpp">
       <Filter>Source Files\Transformations</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformationExercice.cpp">
+      <Filter>Source Files\Transformations\TransformationsExercices</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
