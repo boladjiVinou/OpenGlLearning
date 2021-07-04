@@ -19,6 +19,7 @@ d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice3.cpp(5): warni
   TextureExercice1.cpp
   TextureExercice2.cpp
   TextureExercice3.cpp
+  TransformationExample.cpp
   Generating Code...
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   OpenGlCourseApp.vcxproj -> D:\OPENGL LEARNING\OpenGlCourseApp\Debug\OpenGlCourseApp.exe

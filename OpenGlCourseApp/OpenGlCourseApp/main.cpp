@@ -7,10 +7,10 @@
 //#include "ShaderExample.cpp"
 //#include "ShaderExercice3.cpp"
 //#include "TextureExample.cpp"
-#include "TextureExercice3.cpp"
+#include "TransformationExample.cpp"
 int main() 
 {
-	TextureExercice3 example;
+	TransformationExample example;
 	example.run();
 	return 0;
 }

@@ -5,6 +5,9 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 using namespace std;
 class Shader
 {
@@ -100,6 +103,10 @@ public:
 	void setFloat(const std::string &name, float value) const
 	{
 		glUniform1f(glGetUniformLocation(_programId, name.c_str()), value);
+	}
+	void setMat4(const std::string &name, glm::mat4 value) 
+	{
+		glUniformMatrix4fv(glGetUniformLocation(_programId, name.c_str()),1,GL_FALSE, glm::value_ptr(value));
 	}
 	void useProgram()
 	{

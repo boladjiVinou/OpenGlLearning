@@ -2,21 +2,23 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include "stb_image.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 #include "Shader.cpp"
 
-class TextureExercice3 {
+//#include "stb_image.h"
+class TransformationExample {
 	const string vertexShaderSource = "#version 330 core\n"
 		"layout (location = 0) in vec3 aPos;\n"
 		"layout (location = 2) in vec2 aTexCoord;"
-		"layout (location = 3) in vec2 aFaceTexCoord;"
+		"uniform mat4 transform;\n"
 		"out vec4 ourColor;\n"
 		"out vec2 TexCoord;\n"
-		"out vec2 faceTexCoord;\n"
 		"void main()\n"
 		"{\n"
-		" gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-		" faceTexCoord = aFaceTexCoord;\n"
+		" gl_Position = transform * vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
 		" ourColor =gl_Position;\n"
 		" TexCoord = aTexCoord;\n"
 		"}\0";
@@ -25,13 +27,13 @@ class TextureExercice3 {
 		"out vec4 FragColor;\n"
 		"in vec4 ourColor;"
 		"in vec2 TexCoord;\n"
-		"in vec2 faceTexCoord; \n"
+		//"uniform vec4 ourColor;\n"
 		"uniform sampler2D texture1;"
 		"uniform sampler2D texture2;"
 		"void main()\n"
 		"{\n"
 		"	FragColor = mix( texture(texture1, TexCoord),"
-		"					 texture(texture2, faceTexCoord),"
+		"					 texture(texture2, TexCoord),"
 		"							 0.2);\n"
 		"}\0";
 
@@ -74,10 +76,10 @@ public:
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 
 		float vertices[] = {
-			0.5f, 0.5f, 0.0f,		1.0f,1.0f,		0.55f,0.55f,// top right
-			0.5f, -0.5f, 0.0f,		1.0f,0.0f,		0.55f,0.45f,// bottom right
-			-0.5f, -0.5f, 0.0f,		0.0f,0.0f,		0.45f,0.45f,// bottom left
-			-0.5f, 0.5f, 0.0f,		0.0f,1.0f,		0.45f,0.55f// top leftv
+			0.5f, 0.5f, 0.0f,		1.0f,1.0f, // top right
+			0.5f, -0.5f, 0.0f,		1.0f,0.0f, // bottom right
+			-0.5f, -0.5f, 0.0f,		0.0f,0.0f, // bottom left
+			-0.5f, 0.5f, 0.0f,		0.0f,1.0f  // top leftv
 		};
 		unsigned int indices[] = { 0, 1, 3, 3, 2, 1 };
 		unsigned int VAO;
@@ -100,14 +102,11 @@ public:
 
 
 
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 7 * sizeof(float),
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float),
 			(void*)(3 * sizeof(float)));
 		glEnableVertexAttribArray(2);
-		glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, 7 * sizeof(float),
-			(void*)(5 * sizeof(float)));
-		glEnableVertexAttribArray(3);
 
 		int width, height, nrChannels;
 		stbi_set_flip_vertically_on_load(true);
@@ -162,6 +161,15 @@ public:
 		fragmentShader.setInt("texture1", 0);
 		fragmentShader.setInt("texture2", 1);
 
+		glm::mat4 trans = glm::mat4(1.0f);
+		trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
+		//trans = glm::rotate(trans, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+		trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));
+		
+		
+
+		vertexShader.setMat4("transform",trans);
+
 		while (!glfwWindowShouldClose(window))
 		{
 			processInput(window);
@@ -172,6 +180,10 @@ public:
 			glBindTexture(GL_TEXTURE_2D, texture1);
 			glActiveTexture(GL_TEXTURE1);
 			glBindTexture(GL_TEXTURE_2D, texture2);
+
+			glm::mat4 tmpTrans = glm::rotate(trans, (float)glfwGetTime(),
+				glm::vec3(0.0f, 0.0f, 1.0f));
+			vertexShader.setMat4("transform", tmpTrans);
 
 			glUseProgram(shaderProgram);
 

@@ -31,6 +31,9 @@
     <Filter Include="Source Files\Textures\TexturesExercices">
       <UniqueIdentifier>{7467b776-24a2-445c-8bd2-758e924e7f5b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Transformations">
+      <UniqueIdentifier>{49883640-a9ed-4888-b28d-055eec574c5a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\External Libs\glad\src\glad.c">
@@ -86,6 +89,9 @@
     </ClCompile>
     <ClCompile Include="TextureExercice3.cpp">
       <Filter>Source Files\Textures\TexturesExercices</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformationExample.cpp">
+      <Filter>Source Files\Transformations</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
