@@ -7,10 +7,11 @@
 //#include "ShaderExample.cpp"
 //#include "ShaderExercice3.cpp"
 //#include "TextureExample.cpp"
-#include "TransformationExercice.cpp"
+//#include "TransformationExercice.cpp"
+#include "CoordinateSystemExample.cpp";
 int main() 
 {
-	TransformationExercice example;
+	CoordinateSystemExample example;
 	example.run();
 	return 0;
 }

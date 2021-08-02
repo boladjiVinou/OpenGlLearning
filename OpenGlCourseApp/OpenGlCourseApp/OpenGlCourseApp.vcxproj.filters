@@ -37,6 +37,9 @@
     <Filter Include="Source Files\Transformations\TransformationsExercices">
       <UniqueIdentifier>{e6ae918b-6405-4d0d-95cb-cf8a492f6f41}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\CoordinateSystems">
+      <UniqueIdentifier>{03d6a4c6-afd5-4c14-8335-4b4ce757b98b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\External Libs\glad\src\glad.c">
@@ -98,6 +101,9 @@
     </ClCompile>
     <ClCompile Include="TransformationExercice.cpp">
       <Filter>Source Files\Transformations\TransformationsExercices</Filter>
+    </ClCompile>
+    <ClCompile Include="CoordinateSystemExample.cpp">
+      <Filter>Source Files\CoordinateSystems</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

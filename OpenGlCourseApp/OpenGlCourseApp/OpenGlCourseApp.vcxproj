@@ -172,6 +172,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\External Libs\glad\src\glad.c" />
+    <ClCompile Include="CoordinateSystemExample.cpp" />
     <ClCompile Include="HelloRectangle.cpp" />
     <ClCompile Include="HelloTriangle.cpp" />
     <ClCompile Include="HelloTriangle_3.cpp" />
