@@ -239,17 +239,10 @@ public:
 				float angle = 20.0f * (i+1);
 				glm::mat4 tmpModel = glm::rotate(model, (float)glfwGetTime()*glm::radians(angle),
 					glm::vec3(1.0f, 0.3f, 0.5f));
-				//glm::mat4 tmpModel = glm::rotate(model, (float)glfwGetTime()*glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f));
 				vertexShader.setMat4("model", tmpModel);
 
 				glDrawArrays(GL_TRIANGLES, 0, 36);
 			}
-
-
-			//glm::mat4 tmpModel = glm::rotate(model, (float)glfwGetTime()*glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f));
-			//vertexShader.setMat4("model", tmpModel);
-
-			//	glDrawArrays(GL_TRIANGLES, 0, 36);
 
 			glfwSwapBuffers(window);
 			glfwPollEvents();
