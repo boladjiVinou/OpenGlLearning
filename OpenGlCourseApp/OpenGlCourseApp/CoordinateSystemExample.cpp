@@ -4,6 +4,7 @@
 #include "stb_image.h"
 
 #include "Shader.cpp"
+#include "Camera.h"
 
 //#include "stb_image.h"
 class CoordinateSystemExample {
@@ -46,7 +47,9 @@ class CoordinateSystemExample {
 		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 			glfwSetWindowShouldClose(window, true);
 	}
+	
 public:
+
 	int run()
 	{
 		glfwInit();
@@ -194,12 +197,17 @@ public:
 
 		glm::mat4 model = glm::mat4(1.0f);
 		model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-		glm::mat4 view = glm::mat4(1.0f);
-		view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+		//glm::mat4 view = glm::mat4(1.0f);
+		//view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
 		glm::mat4 projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
-
-		vertexShader.setMat4("view", view);
+		
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+		
+		Camera cam = Camera(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 1.0f, 0.0f), 800.0f);
+		glfwSetCursorPosCallback(window, Camera::mouse_callback);
+		//vertexShader.setMat4("view", view);
 		vertexShader.setMat4("projection", projection);
+		vertexShader.setMat4("view", cam.getViewMatrix());
 
 		glm::vec3 cubePositions[] = {
 			glm::vec3(0.0f, 0.0f, 0.0f),
@@ -232,12 +240,20 @@ public:
 
 			glBindVertexArray(VAO);
 
-			for (unsigned int i = 0; i < 10; i++)
+			cam.processInput(window);
+
+			cam.updateRotation();
+			
+			vertexShader.setMat4("view", cam.getViewMatrix());
+
+ 			for (unsigned int i = 0; i < 10; i++)
 			{
 				glm::mat4 model = glm::mat4(1.0f);
 				model = glm::translate(model, cubePositions[i]);
-				float angle = 20.0f * (i+1);
-				glm::mat4 tmpModel = glm::rotate(model, (float)glfwGetTime()*glm::radians(angle),
+				glm::mat4 tmpModel = model;
+				//if (i == 0 || i == 2) exo 3
+				float angle = 20.0f * (i + 1);
+				tmpModel = glm::rotate(tmpModel, (float)glfwGetTime()*glm::radians(angle),
 					glm::vec3(1.0f, 0.3f, 0.5f));
 				vertexShader.setMat4("model", tmpModel);
 
@@ -250,5 +266,4 @@ public:
 		glfwTerminate();
 		return 0;
 	}
-
 };

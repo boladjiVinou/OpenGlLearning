@@ -40,6 +40,9 @@
     <Filter Include="Source Files\CoordinateSystems">
       <UniqueIdentifier>{03d6a4c6-afd5-4c14-8335-4b4ce757b98b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Camera">
+      <UniqueIdentifier>{ca8b029c-d68e-4d44-9e92-0cc4b00a330f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\External Libs\glad\src\glad.c">
@@ -105,10 +108,16 @@
     <ClCompile Include="CoordinateSystemExample.cpp">
       <Filter>Source Files\CoordinateSystems</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\Camera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stb_image.h">
       <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Source Files\Camera</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
