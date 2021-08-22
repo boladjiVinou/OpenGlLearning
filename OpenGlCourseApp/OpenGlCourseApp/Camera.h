@@ -15,6 +15,7 @@ private:
 	float deltaTime = 0.0f; // Time between current frame and last frame
 	float lastFrame = 0.0f; // Time of last frame
 	void updateLookat();
+	glm::mat4 myLookat();
 	
 public:
 	static float lastX;

@@ -1,10 +1,11 @@
 #include "Camera.h"
 #include <iostream>
+#include <glm/gtx/string_cast.hpp>
 using namespace std;
 
 void Camera:: updateLookat()
 {
-	lookAt = glm::lookAt(position, cameraFront, up);
+	lookAt = myLookat();//glm::lookAt(position, cameraFront, up);
 }
 void Camera::updateRotation()
 {
@@ -75,6 +76,31 @@ void Camera:: mouse_callback(GLFWwindow* window, double xpos, double ypos)
 	yoffset *= sensitivity;
 	yaw += xoffset;
 	pitch += yoffset;
+}
+
+glm::mat4 Camera::myLookat()
+{
+	glm::mat4 lookAtMat = glm::mat4(1);
+	
+	glm::vec3 dir = glm::normalize(position - cameraFront);
+	glm::vec3 right = glm::normalize(glm::cross(up, dir));
+	glm::vec3 tmpUp = glm::cross(dir, right);
+	lookAtMat[0][0] = right.x;
+	lookAtMat[1][0] = right.y;
+	lookAtMat[2][0] = right.z;
+	lookAtMat[0][1] = tmpUp.x;
+	lookAtMat[1][1] = tmpUp.y;
+	lookAtMat[2][1] = tmpUp.z;
+	lookAtMat[0][2] = dir.x;
+	lookAtMat[1][2] = dir.y;
+	lookAtMat[2][2] = dir.z;
+	glm::mat4 translateMat = glm::mat4(1);
+	translateMat[3][0] = -position.x;
+	translateMat[3][1] = -position.y;
+	translateMat[3][2] = -position.z;
+	lookAtMat = lookAtMat *translateMat;
+
+	return lookAtMat;
 }
 float Camera::lastX = 400;
 float Camera::lastY = 300;
