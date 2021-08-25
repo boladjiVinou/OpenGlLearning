@@ -240,8 +240,6 @@ public:
 			glBindVertexArray(VAO);
 
 			cam.processInput(window);
-
-			cam.updateRotation();
 			
 			vertexShader.setMat4("view", cam.getViewMatrix());
 

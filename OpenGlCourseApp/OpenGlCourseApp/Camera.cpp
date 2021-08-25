@@ -16,17 +16,17 @@ void Camera::updateRotation()
 	direction.y = sin(radPitch);
 	direction.z = sin(radYaw)* cos(radPitch);
 	cameraFront = glm::normalize(direction);
-	cameraFront.x *= windowsHeight;
-	cameraFront.y *= windowsHeight;
-	cameraFront.z *= windowsHeight;
+	cameraFront.x *= windowsWidth;
+	cameraFront.y *= windowsWidth;
+	cameraFront.z *= windowsWidth;
 }
 
-Camera::Camera(GLFWwindow* window,glm::vec3 position, glm::vec3 target, glm::vec3 up, float height, float width)
+Camera::Camera(GLFWwindow* window,glm::vec3 position, glm::vec3 target, glm::vec3 up, float width, float height)
 {
 	this->position = position;
 	this->target = target;
 	this->up = up;
-	this->windowsHeight = height;
+	this->windowsHeigth = height;
 	this->windowsWidth = width;
 	lookAt = glm::lookAt(position, target, up);
 	updateProjection();
@@ -56,6 +56,7 @@ void Camera::processInput(GLFWwindow *window)
 		position += glm::normalize(glm::cross(cameraFront, up)) * cameraSpeed;
 	}
 	updateLookat();
+	updateRotation();
 	updateProjection();
 }
 
@@ -120,7 +121,7 @@ void Camera::scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 
 void Camera::updateProjection() 
 {
-	projection = glm::perspective(glm::radians(Zoom), windowsHeight / windowsWidth, 0.1f, 100.0f);
+	projection = glm::perspective(glm::radians(Zoom), windowsWidth / windowsHeigth, 0.1f, 100.0f);
 }
 glm::mat4 Camera::getProjection()
 {

@@ -192,8 +192,6 @@ public:
 
 			cam.processInput(window);
 
-			cam.updateRotation();
-
 			//model = glm::rotate(model, (float)glfwGetTime()*glm::radians(20.0f), glm::vec3(1.0f, 0.3f, 0.5f));
 			//vertexShader.useProgram();
 			//vertexShader.setMat4("model", model);
