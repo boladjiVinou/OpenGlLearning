@@ -43,6 +43,9 @@
     <Filter Include="Source Files\Camera">
       <UniqueIdentifier>{ca8b029c-d68e-4d44-9e92-0cc4b00a330f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Colors">
+      <UniqueIdentifier>{909736a3-5f29-42fa-88da-8153ec93c91f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\External Libs\glad\src\glad.c">
@@ -110,6 +113,9 @@
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorsExample.cpp">
+      <Filter>Source Files\Colors</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -173,6 +173,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\External Libs\glad\src\glad.c" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="ColorsExample.cpp" />
     <ClCompile Include="CoordinateSystemExample.cpp" />
     <ClCompile Include="HelloRectangle.cpp" />
     <ClCompile Include="HelloTriangle.cpp" />

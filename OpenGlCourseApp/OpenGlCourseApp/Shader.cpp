@@ -100,13 +100,17 @@ public:
 	{
 		glUniform1i(glGetUniformLocation(_programId, name.c_str()), value);
 	}
-	void setFloat(const std::string &name, float value) const
+	void setFloat(const std::string &name,  float value) const
 	{
 		glUniform1f(glGetUniformLocation(_programId, name.c_str()), value);
 	}
-	void setMat4(const std::string &name, glm::mat4 value) 
+	void setMat4(const std::string &name, const glm::mat4 &value)
 	{
 		glUniformMatrix4fv(glGetUniformLocation(_programId, name.c_str()),1,GL_FALSE, glm::value_ptr(value));
+	}
+	void setVec3(const std::string &name, const glm::vec3 &value)
+	{
+		glUniform3fv(glGetUniformLocation(_programId, name.c_str()),1, glm::value_ptr(value));
 	}
 	void useProgram()
 	{

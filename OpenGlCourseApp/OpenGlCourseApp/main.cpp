@@ -8,10 +8,11 @@
 //#include "ShaderExercice3.cpp"
 //#include "TextureExample.cpp"
 //#include "TransformationExercice.cpp"
-#include "CoordinateSystemExample.cpp";
+//#include "CoordinateSystemExample.cpp";
+#include "ColorsExample.cpp"
 int main() 
 {
-	CoordinateSystemExample example;
+	ColorsExample example;
 	example.run();
 	return 0;
 }

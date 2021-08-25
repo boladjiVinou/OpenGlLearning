@@ -16,18 +16,22 @@ void Camera::updateRotation()
 	direction.y = sin(radPitch);
 	direction.z = sin(radYaw)* cos(radPitch);
 	cameraFront = glm::normalize(direction);
-	cameraFront.x *= far;
-	cameraFront.y *= far;
-	cameraFront.z *= far;
+	cameraFront.x *= windowsHeight;
+	cameraFront.y *= windowsHeight;
+	cameraFront.z *= windowsHeight;
 }
 
-Camera::Camera(glm::vec3 position, glm::vec3 target, glm::vec3 up, float far)
+Camera::Camera(GLFWwindow* window,glm::vec3 position, glm::vec3 target, glm::vec3 up, float height, float width)
 {
 	this->position = position;
 	this->target = target;
 	this->up = up;
-	this->far = far;
+	this->windowsHeight = height;
+	this->windowsWidth = width;
 	lookAt = glm::lookAt(position, target, up);
+	updateProjection();
+	glfwSetCursorPosCallback(window, Camera::mouse_callback);
+	glfwSetScrollCallback(window, Camera::scroll_callback);
 }
 void Camera::processInput(GLFWwindow *window)
 {
@@ -52,6 +56,7 @@ void Camera::processInput(GLFWwindow *window)
 		position += glm::normalize(glm::cross(cameraFront, up)) * cameraSpeed;
 	}
 	updateLookat();
+	updateProjection();
 }
 
 glm::mat4 Camera::getViewMatrix()
@@ -102,8 +107,28 @@ glm::mat4 Camera::myLookat()
 
 	return lookAtMat;
 }
-float Camera::lastX = 400;
-float Camera::lastY = 300;
+
+void Camera::scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+	Zoom -= (float)yoffset;
+	if (Zoom < 1.0f)
+		Zoom = 1.0f;
+	if (Zoom > 45.0f)
+		Zoom = 45.0f;
+}
+
+
+void Camera::updateProjection() 
+{
+	projection = glm::perspective(glm::radians(Zoom), windowsHeight / windowsWidth, 0.1f, 100.0f);
+}
+glm::mat4 Camera::getProjection()
+{
+	return projection;
+}
+float Camera::lastX = 400.0f;
+float Camera::lastY = 300.0f;
 bool Camera::firstMouse = true;
-float Camera::yaw = -90;
-float Camera::pitch = 0;
+float Camera::yaw = -90.0f;
+float Camera::pitch = 0.0f;
+float Camera::Zoom = 45.0f;
