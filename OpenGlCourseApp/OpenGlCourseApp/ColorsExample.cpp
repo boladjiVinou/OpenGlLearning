@@ -155,9 +155,10 @@ public:
 		vertexShader.setMat4("projection", projection);
 		vertexShader.setMat4("view", cam.getViewMatrix());
 
-		/*
+		
 		glBindVertexArray(lightVAO);
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 
 		unsigned int lightShaderProgram = glCreateProgram();
 		Shader lightVertexShader = Shader(vertexShaderSource, GL_VERTEX_SHADER);
@@ -166,9 +167,9 @@ public:
 		lightFragmentShader.AttachShaderTo(lightShaderProgram);
 
 		glm::mat4 lightModel = glm::mat4(1.0f);
-		glm::translate(lightModel, glm::vec3(1.2f, 10.0f, 2.0f));
+		lightModel = glm::translate(lightModel, glm::vec3(1.2f, 1.0f, 2.0f));
 		lightModel = glm::scale(lightModel, glm::vec3(0.2f));
-
+		
 
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
@@ -177,39 +178,33 @@ public:
 		lightVertexShader.setMat4("model", lightModel);
 		lightVertexShader.setMat4("projection", projection);
 		lightVertexShader.setMat4("view", cam.getViewMatrix());
-		*/
+		
 		glEnable(GL_DEPTH_TEST);
 		while (!glfwWindowShouldClose(window))
 		{
-			glBindVertexArray(VAO);
-
 			processInput(window);
 			// rendering commands here
 			glClear(GL_COLOR_BUFFER_BIT);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-			glUseProgram(shaderProgram);
-
 			cam.processInput(window);
 
+			glBindVertexArray(lightVAO);
+			lightVertexShader.useProgram();
+			//lightModel = glm::rotate(lightModel, (float)glfwGetTime()*glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+			//lightVertexShader.setMat4("model", lightModel);
+			lightVertexShader.setMat4("view", cam.getViewMatrix());
+			lightVertexShader.setMat4("projection", cam.getProjection());
+			glDrawArrays(GL_TRIANGLES, 0, 36);
+
+			glBindVertexArray(VAO);
+			vertexShader.useProgram();
 			//model = glm::rotate(model, (float)glfwGetTime()*glm::radians(20.0f), glm::vec3(1.0f, 0.3f, 0.5f));
 			//vertexShader.useProgram();
 			//vertexShader.setMat4("model", model);
 			vertexShader.setMat4("view", cam.getViewMatrix());
 			vertexShader.setMat4("projection", cam.getProjection());
-
 			glDrawArrays(GL_TRIANGLES, 0, 36);
-
-			/*glBindVertexArray(lightVAO);
-
-			glUseProgram(lightShaderProgram);
-
-			//lightModel = glm::rotate(lightModel, (float)glfwGetTime()*glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-			//lightVertexShader.setMat4("model", lightModel);
-			lightVertexShader.setMat4("view", cam.getViewMatrix());
-
-			glDrawArrays(GL_TRIANGLES, 0, 36);
-			*/
+			
 			glfwSwapBuffers(window);
 			glfwPollEvents();
 		}
