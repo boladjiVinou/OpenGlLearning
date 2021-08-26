@@ -10,21 +10,37 @@
 class ColorsExample {
 	const string vertexShaderSource = "#version 330 core\n"
 		"layout(location = 0) in vec3 aPos;\n"
+		"layout(location = 1) in vec3 aNormal;\n"
+		"out vec3 Normal;"
+		"out vec3 FragPos;"
 		"uniform mat4 model;\n"
+		"uniform mat3 NormalModel;"
 		"uniform mat4 view;\n"
 		"uniform mat4 projection;\n"
 		"void main()\n"
 		"{\n"
 		"	gl_Position = projection * view * model * vec4(aPos, 1.0);\n"
+		"	FragPos = vec3(model * vec4(aPos, 1.0));"
+		"   Normal =NormalModel*aNormal; "
 		"}\n";
 
 	const string fragmentShaderSource = "#version 330 core\n"
 		"out vec4 FragColor;\n"
 		"uniform vec3 objectColor;\n"
 		"uniform vec3 lightColor;\n"
+		"uniform vec3 lightPos;\n"
+		"in vec3 Normal;"
+		"in vec3 FragPos;"
 		"void main()\n"
 		"{\n"
-			"FragColor = vec4(lightColor * objectColor, 1.0);\n"
+			"float ambientStrength = 0.1;\n"
+			"vec3 ambient = ambientStrength * lightColor; \n"
+			"vec3 norm = normalize(Normal);"
+			"vec3 lightDir = normalize(lightPos - FragPos); "
+			"float diff = max(dot(norm, lightDir), 0.0);"
+			"vec3 diffuse = diff * lightColor; "
+			"vec3 result = (diffuse +ambient )* objectColor; \n"
+			"FragColor = vec4(result, 1.0); \n"
 		"}\n";
 
 	const string lightFragmentShaderSource = "#version 330 core\n"
@@ -75,42 +91,43 @@ public:
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 
 		float vertices[] = {
-			-0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
-			0.5f, -0.5f, -0.5f, 1.0f, 0.0f,
-			0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
-			0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
-			-0.5f, 0.5f, -0.5f, 0.0f, 1.0f,
-			-0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
-			-0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
-			0.5f, -0.5f, 0.5f, 1.0f, 0.0f,
-			0.5f, 0.5f, 0.5f, 1.0f, 1.0f,
-			0.5f, 0.5f, 0.5f, 1.0f, 1.0f,
-			-0.5f, 0.5f, 0.5f, 0.0f, 1.0f,
-			-0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
-			-0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
-			-0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
-			-0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-			-0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-			-0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
-			-0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
-			0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
-			0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
-			0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-			0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-			0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
-			0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
-			-0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-			0.5f, -0.5f, -0.5f, 1.0f, 1.0f,
-			0.5f, -0.5f, 0.5f, 1.0f, 0.0f,
-			0.5f, -0.5f, 0.5f, 1.0f, 0.0f,
-			-0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
-			-0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-			-0.5f, 0.5f, -0.5f, 0.0f, 1.0f,
-			0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
-			0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
-			0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
-			-0.5f, 0.5f, 0.5f, 0.0f, 0.0f,
-			-0.5f, 0.5f, -0.5f, 0.0f, 1.0f
+			// positions // normals // texture coords
+		-0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f,
+		0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 1.0f, 0.0f,
+		0.5f, 0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 1.0f, 1.0f,
+		0.5f, 0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 1.0f, 1.0f,
+		-0.5f, 0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 0.0f, 1.0f,
+		-0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f,
+		-0.5f, -0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,
+		0.5f, -0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+		0.5f, 0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+		0.5f, 0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+		-0.5f, 0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f,
+		-0.5f, -0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,
+		-0.5f, 0.5f, 0.5f, -1.0f, 0.0f, 0.0f, 1.0f, 0.0f,
+		-0.5f, 0.5f, -0.5f, -1.0f, 0.0f, 0.0f, 1.0f, 1.0f,
+		-0.5f, -0.5f, -0.5f, -1.0f, 0.0f, 0.0f, 0.0f, 1.0f,
+		-0.5f, -0.5f, -0.5f, -1.0f, 0.0f, 0.0f, 0.0f, 1.0f,
+		-0.5f, -0.5f, 0.5f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+		-0.5f, 0.5f, 0.5f, -1.0f, 0.0f, 0.0f, 1.0f, 0.0f,
+		0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f,
+		0.5f, 0.5f, -0.5f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f,
+		0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f,
+		0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f,
+		0.5f, -0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+		0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f,
+		-0.5f, -0.5f, -0.5f, 0.0f, -1.0f, 0.0f, 0.0f, 1.0f,
+		0.5f, -0.5f, -0.5f, 0.0f, -1.0f, 0.0f, 1.0f, 1.0f,
+		0.5f, -0.5f, 0.5f, 0.0f, -1.0f, 0.0f, 1.0f, 0.0f,
+		0.5f, -0.5f, 0.5f, 0.0f, -1.0f, 0.0f, 1.0f, 0.0f,
+		-0.5f, -0.5f, 0.5f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f,
+		-0.5f, -0.5f, -0.5f, 0.0f, -1.0f, 0.0f, 0.0f, 1.0f,
+		-0.5f, 0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
+		0.5f, 0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f,
+		0.5f, 0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f,
+		0.5f, 0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f,
+		-0.5f, 0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f,
+		-0.5f, 0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f
 		};
 		unsigned int indices[] = { 0, 1, 3, 3, 2, 1 };
 		unsigned int VAO, lightVAO;
@@ -140,8 +157,11 @@ public:
 
 
 		
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
+
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(5 * sizeof(float)));
+		glEnableVertexAttribArray(1);
 
 		glm::mat4 model = glm::mat4(1.0f);
 		model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
@@ -152,13 +172,13 @@ public:
 		Camera cam = Camera(window,glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 1.0f, 0.0f), 800.0f,600.0f);
 		
 		vertexShader.setMat4("model", model);
+		vertexShader.setMat3("NormalModel",glm::mat3(transpose(inverse(model))));
 		vertexShader.setMat4("projection", projection);
 		vertexShader.setMat4("view", cam.getViewMatrix());
 
 		
 		glBindVertexArray(lightVAO);
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 
 		unsigned int lightShaderProgram = glCreateProgram();
 		Shader lightVertexShader = Shader(vertexShaderSource, GL_VERTEX_SHADER);
@@ -167,11 +187,12 @@ public:
 		lightFragmentShader.AttachShaderTo(lightShaderProgram);
 
 		glm::mat4 lightModel = glm::mat4(1.0f);
+		glm::vec3 lightPos = glm::vec3(1.2f, 1.0f, 2.0f);
 		lightModel = glm::translate(lightModel, glm::vec3(1.2f, 1.0f, 2.0f));
 		lightModel = glm::scale(lightModel, glm::vec3(0.2f));
 		
 
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
 
 		lightVertexShader.useProgram();
@@ -190,19 +211,21 @@ public:
 
 			glBindVertexArray(lightVAO);
 			lightVertexShader.useProgram();
-			//lightModel = glm::rotate(lightModel, (float)glfwGetTime()*glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-			//lightVertexShader.setMat4("model", lightModel);
+			glm::mat4 tmpLightModel = glm::rotate(lightModel, (float)glfwGetTime()*glm::radians(20.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+			lightVertexShader.setMat4("model", tmpLightModel);
 			lightVertexShader.setMat4("view", cam.getViewMatrix());
 			lightVertexShader.setMat4("projection", cam.getProjection());
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 
 			glBindVertexArray(VAO);
 			vertexShader.useProgram();
-			//model = glm::rotate(model, (float)glfwGetTime()*glm::radians(20.0f), glm::vec3(1.0f, 0.3f, 0.5f));
+			glm::mat4 tmpModel = glm::rotate(model, (float)glfwGetTime()*glm::radians(10.0f), glm::vec3(1.0f, 0.3f, 0.5f));
 			//vertexShader.useProgram();
-			//vertexShader.setMat4("model", model);
+			vertexShader.setMat4("model", tmpModel);
 			vertexShader.setMat4("view", cam.getViewMatrix());
 			vertexShader.setMat4("projection", cam.getProjection());
+			fragmentShader.setVec3("lightPos", lightPos);
+			vertexShader.setMat4("NormalModel", glm::mat3(transpose(inverse(tmpModel))));
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 			
 			glfwSwapBuffers(window);

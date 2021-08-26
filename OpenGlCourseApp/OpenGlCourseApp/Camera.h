@@ -26,8 +26,10 @@ private:
 	void updateProjection();
 	void updateRotation();
 	glm::mat4 myLookat();
+	glm::vec3 computeMouseWorldPosition();
 	static void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 	static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+	
 public:
 
 	Camera(GLFWwindow* window,glm::vec3 position, glm::vec3 target, glm::vec3 up, float width, float height);

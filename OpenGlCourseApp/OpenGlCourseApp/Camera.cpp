@@ -127,6 +127,18 @@ glm::mat4 Camera::getProjection()
 {
 	return projection;
 }
+glm::vec3 Camera::computeMouseWorldPosition()
+{
+	float halfWidth = windowsWidth / 2;
+	float halfHeight = windowsHeigth / 2;
+	glm::vec4 clipSpaceCoord;
+	clipSpaceCoord.z = (lastX - halfWidth) / halfWidth;
+	clipSpaceCoord.x = (lastY - halfHeight) / halfHeight;
+	clipSpaceCoord.w = 100.0f;
+	glm::vec4 worldCoord = glm::inverse(lookAt) *(glm::inverse(projection) * clipSpaceCoord);
+	std::cout << glm::to_string(worldCoord) << std::endl;
+	return glm::vec3(worldCoord);
+}
 float Camera::lastX = 400.0f;
 float Camera::lastY = 300.0f;
 bool Camera::firstMouse = true;
