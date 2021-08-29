@@ -29,6 +29,7 @@ class ColorsExample {
 		"uniform vec3 objectColor;\n"
 		"uniform vec3 lightColor;\n"
 		"uniform vec3 lightPos;\n"
+		"uniform vec3 viewPos;"
 		"in vec3 Normal;"
 		"in vec3 FragPos;"
 		"void main()\n"
@@ -39,7 +40,12 @@ class ColorsExample {
 			"vec3 lightDir = normalize(lightPos - FragPos); "
 			"float diff = max(dot(norm, lightDir), 0.0);"
 			"vec3 diffuse = diff * lightColor; "
-			"vec3 result = (diffuse +ambient )* objectColor; \n"
+			"vec3 viewDir = normalize(viewPos - FragPos);"
+			"vec3 reflectDir = reflect(-lightDir, norm);"
+			"float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);"
+			"float specularStrength = 0.5;"
+			"vec3 specular = specularStrength * spec * lightColor;"
+			"vec3 result = (diffuse + ambient + specular)* objectColor; \n"
 			"FragColor = vec4(result, 1.0); \n"
 		"}\n";
 
@@ -211,8 +217,8 @@ public:
 
 			glBindVertexArray(lightVAO);
 			lightVertexShader.useProgram();
-			glm::mat4 tmpLightModel = glm::rotate(lightModel, (float)glfwGetTime()*glm::radians(20.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-			lightVertexShader.setMat4("model", tmpLightModel);
+			//glm::mat4 tmpLightModel = glm::rotate(lightModel, (float)glfwGetTime()*glm::radians(20.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+			//lightVertexShader.setMat4("model", tmpLightModel);
 			lightVertexShader.setMat4("view", cam.getViewMatrix());
 			lightVertexShader.setMat4("projection", cam.getProjection());
 			glDrawArrays(GL_TRIANGLES, 0, 36);
@@ -225,6 +231,7 @@ public:
 			vertexShader.setMat4("view", cam.getViewMatrix());
 			vertexShader.setMat4("projection", cam.getProjection());
 			fragmentShader.setVec3("lightPos", lightPos);
+			fragmentShader.setVec3("viewPos", cam.getPosition());
 			vertexShader.setMat4("NormalModel", glm::mat3(transpose(inverse(tmpModel))));
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 			

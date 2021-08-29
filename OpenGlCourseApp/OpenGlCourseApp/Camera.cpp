@@ -139,6 +139,12 @@ glm::vec3 Camera::computeMouseWorldPosition()
 	std::cout << glm::to_string(worldCoord) << std::endl;
 	return glm::vec3(worldCoord);
 }
+
+glm::vec3 Camera :: getPosition()
+{
+	return this->position;
+}
+
 float Camera::lastX = 400.0f;
 float Camera::lastY = 300.0f;
 bool Camera::firstMouse = true;

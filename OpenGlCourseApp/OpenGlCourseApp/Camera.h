@@ -36,4 +36,5 @@ public:
 	void processInput(GLFWwindow *window);
 	glm::mat4 getProjection();
 	glm::mat4 getViewMatrix();
+	glm::vec3 getPosition();
 };
