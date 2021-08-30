@@ -46,6 +46,12 @@
     <Filter Include="Source Files\Colors">
       <UniqueIdentifier>{909736a3-5f29-42fa-88da-8153ec93c91f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Colors\ColorsExercices">
+      <UniqueIdentifier>{23181fe2-ebc3-48cb-beff-057761c0faff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SceneOrigin">
+      <UniqueIdentifier>{dfd64331-1e11-469e-b737-499636034260}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\External Libs\glad\src\glad.c">
@@ -116,6 +122,15 @@
     </ClCompile>
     <ClCompile Include="ColorsExample.cpp">
       <Filter>Source Files\Colors</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorsExercice1.cpp">
+      <Filter>Source Files\Colors\ColorsExercices</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneOrigin.cpp">
+      <Filter>Source Files\SceneOrigin</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneOriginTest.cpp">
+      <Filter>Source Files\SceneOrigin</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

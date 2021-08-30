@@ -9,10 +9,10 @@
 //#include "TextureExample.cpp"
 //#include "TransformationExercice.cpp"
 //#include "CoordinateSystemExample.cpp";
-#include "ColorsExample.cpp"
+#include "ColorsExercice1.cpp"
 int main() 
 {
-	ColorsExample example;
+	ColorsExercice1 example;
 	example.run();
 	return 0;
 }

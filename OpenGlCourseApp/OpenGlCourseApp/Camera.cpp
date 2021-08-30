@@ -5,7 +5,7 @@ using namespace std;
 
 void Camera:: updateLookat()
 {
-	lookAt = myLookat();//glm::lookAt(position, cameraFront, up);
+	lookAt = glm::lookAt(position, cameraFront, up);
 }
 void Camera::updateRotation()
 {
