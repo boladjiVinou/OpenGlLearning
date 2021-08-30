@@ -15,14 +15,14 @@ class ColorsExercice1 {
 		"out vec3 Normal;"
 		"out vec3 FragPos;"
 		"uniform mat4 model;\n"
-		"uniform mat3 NormalModel;"
+		"uniform mat3 TranspInvViewModel;"
 		"uniform mat4 view;\n"
 		"uniform mat4 projection;\n"
 		"void main()\n"
 		"{\n"
 		"	gl_Position = projection * view * model * vec4(aPos, 1.0);\n"
 		"	FragPos = vec3(model * vec4(aPos, 1.0));"
-		"   Normal =NormalModel*aNormal; "
+		"   Normal =TranspInvViewModel*aNormal; "
 		"}\n";
 
 	const string fragmentShaderSource = "#version 330 core\n"
@@ -43,7 +43,7 @@ class ColorsExercice1 {
 		"vec3 diffuse = diff * lightColor; "
 		"vec3 viewDir = normalize(viewPos - FragPos);"
 		"vec3 reflectDir = reflect(-lightDir, norm);"
-		"float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);"
+		"float spec = pow(max(dot(viewDir, reflectDir), 0.0), 256);"
 		"float specularStrength = 0.5;"
 		"vec3 specular = specularStrength * spec * lightColor;"
 		"vec3 result = (diffuse + ambient + specular)* objectColor; \n"
@@ -98,7 +98,7 @@ public:
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 
 
-		SceneOrigin origin;
+
 		float vertices[] = {
 			// positions // normals // texture coords
 		-0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f,
@@ -181,7 +181,7 @@ public:
 		Camera cam = Camera(window, glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 1.0f, 0.0f), 800.0f, 600.0f);
 
 		vertexShader.setMat4("model", model);
-		vertexShader.setMat3("NormalModel", glm::mat3(transpose(inverse(model))));
+		vertexShader.setMat3("TranspInvViewModel", glm::mat3(transpose(inverse(cam.getViewMatrix()*model))));
 		vertexShader.setMat4("projection", projection);
 		vertexShader.setMat4("view", cam.getViewMatrix());
 
@@ -211,7 +211,7 @@ public:
 
 		
 
-		
+		SceneOrigin origin;
 
 		glEnable(GL_DEPTH_TEST); 
 		float radius = 3.0f;
@@ -245,7 +245,7 @@ public:
 			vertexShader.setMat4("projection", cam.getProjection());
 			fragmentShader.setVec3("lightPos", lightPos);
 			fragmentShader.setVec3("viewPos", cam.getPosition());
-			vertexShader.setMat4("NormalModel", glm::mat3(transpose(inverse(tmpModel))));
+			vertexShader.setMat4("TranspInvViewModel", glm::mat3(transpose(inverse(cam.getViewMatrix()*tmpModel))));
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 
 			
