@@ -8,7 +8,7 @@
 #include "SceneOrigin.cpp"
 
 //#include "stb_image.h"
-class ColorsExercice1 {
+class ColorsExercice2 {
 	const string vertexShaderSource = "#version 330 core\n"
 		"layout(location = 0) in vec3 aPos;\n"
 		"layout(location = 1) in vec3 aNormal;\n"
@@ -21,7 +21,7 @@ class ColorsExercice1 {
 		"void main()\n"
 		"{\n"
 		"	gl_Position = projection * view * model * vec4(aPos, 1.0);\n"
-		"	FragPos = vec3(model * vec4(aPos, 1.0));"
+		"	FragPos = vec3(view * model * vec4(aPos, 1.0));"
 		"   Normal =TranspInvViewModel*aNormal; "
 		"}\n";
 
@@ -197,7 +197,7 @@ public:
 
 		glm::mat4 lightModel = glm::mat4(1.0f);
 		glm::vec3 lightPos = glm::vec3(1.2f, 1.0f, 2.0f);
-		
+
 		lightModel = glm::translate(lightModel, lightPos);
 		lightModel = glm::scale(lightModel, glm::vec3(0.1f));
 
@@ -209,11 +209,11 @@ public:
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
 
-		
+
 
 		SceneOrigin origin;
 
-		glEnable(GL_DEPTH_TEST); 
+		glEnable(GL_DEPTH_TEST);
 		float radius = 3.0f;
 		while (!glfwWindowShouldClose(window))
 		{
@@ -224,8 +224,8 @@ public:
 			cam.processInput(window);
 
 			origin.displayOrigin(cam.getViewMatrix(), cam.getProjection());
-			
-			
+
+
 			glBindVertexArray(lightVAO);
 			lightVertexShader.useProgram();
 			//glm::mat4 tmpLightModel = glm::rotate(lightModel, (float)glfwGetTime()*glm::radians(20.0f), glm::vec3(1.0f, 0.0f, 0.0f));
@@ -238,17 +238,17 @@ public:
 			vertexShader.useProgram();
 			float angle = (float)glfwGetTime()*glm::radians(10.0f);
 			//glm::mat4 tmpModel = glm::rotate(model, angle, glm::vec3(1.0f, 0.3f, 0.5f));
-			
-			glm::mat4 tmpModel =glm::translate(model, glm::vec3(radius*cos(angle),0.0f, radius*sin(angle)));
+
+			glm::mat4 tmpModel = glm::translate(model, glm::vec3(radius*cos(angle), 0.0f, radius*sin(angle)));
 			vertexShader.setMat4("model", tmpModel);
 			vertexShader.setMat4("view", cam.getViewMatrix());
 			vertexShader.setMat4("projection", cam.getProjection());
-			fragmentShader.setVec3("lightPos", lightPos);
-			fragmentShader.setVec3("viewPos", cam.getPosition());
+			fragmentShader.setVec3("lightPos", glm::vec3(cam.getViewMatrix() * glm::vec4(lightPos, 1.0)));
+			fragmentShader.setVec3("viewPos",glm::vec3( cam.getViewMatrix() * glm::vec4( cam.getPosition(),1.0)));
 			vertexShader.setMat4("TranspInvViewModel", glm::mat3(transpose(inverse(cam.getViewMatrix()*tmpModel))));
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 
-			
+
 			glfwSwapBuffers(window);
 			glfwPollEvents();
 		}

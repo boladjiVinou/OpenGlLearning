@@ -9,6 +9,7 @@ d:\opengl learning\openglcourseapp\openglcourseapp\camera.cpp(78): warning C4244
 d:\opengl learning\openglcourseapp\openglcourseapp\camera.cpp(79): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   ColorsExample.cpp
   ColorsExercice1.cpp
+  ColorsExercice2.cpp
   CoordinateSystemExample.cpp
   HelloRectangle.cpp
   HelloTriangle.cpp
@@ -28,9 +29,9 @@ d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice2.cpp(5): warni
   ShaderExercice3.cpp
 d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice3.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   stb_image.cpp
-  TextureExample.cpp
   Generating Code...
   Compiling...
+  TextureExample.cpp
   TextureExercice1.cpp
   TextureExercice2.cpp
   TextureExercice3.cpp
