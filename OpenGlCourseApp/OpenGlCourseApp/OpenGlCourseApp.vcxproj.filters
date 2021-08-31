@@ -135,6 +135,9 @@
     <ClCompile Include="ColorsExercice2.cpp">
       <Filter>Source Files\Colors\ColorsExercices</Filter>
     </ClCompile>
+    <ClCompile Include="ColorsExercice3.cpp">
+      <Filter>Source Files\Colors\ColorsExercices</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stb_image.h">
