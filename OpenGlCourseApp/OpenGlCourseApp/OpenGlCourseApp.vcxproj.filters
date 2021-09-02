@@ -52,6 +52,9 @@
     <Filter Include="Source Files\SceneOrigin">
       <UniqueIdentifier>{dfd64331-1e11-469e-b737-499636034260}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Materials">
+      <UniqueIdentifier>{5a772640-0539-4354-8fe1-9c67d54e4f17}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\External Libs\glad\src\glad.c">
@@ -138,6 +141,9 @@
     <ClCompile Include="ColorsExercice3.cpp">
       <Filter>Source Files\Colors\ColorsExercices</Filter>
     </ClCompile>
+    <ClCompile Include="MaterialExample.cpp">
+      <Filter>Source Files\Materials</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stb_image.h">
@@ -146,5 +152,13 @@
     <ClInclude Include="Camera.h">
       <Filter>Source Files\Camera</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Materials_Example.fs">
+      <Filter>Source Files\Materials</Filter>
+    </None>
+    <None Include="Materials_Example.vs">
+      <Filter>Source Files\Materials</Filter>
+    </None>
   </ItemGroup>
 </Project>

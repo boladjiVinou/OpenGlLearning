@@ -185,6 +185,7 @@
     <ClCompile Include="HelloTriangle_2.cpp" />
     <ClCompile Include="HelloWindow.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MaterialExample.cpp" />
     <ClCompile Include="SceneOrigin.cpp" />
     <ClCompile Include="SceneOriginTest.cpp" />
     <ClCompile Include="Shader.cpp" />
@@ -203,6 +204,10 @@
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="stb_image.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Materials_Example.fs" />
+    <None Include="Materials_Example.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

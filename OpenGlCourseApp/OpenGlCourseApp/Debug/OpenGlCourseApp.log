@@ -19,6 +19,11 @@ d:\opengl learning\openglcourseapp\openglcourseapp\camera.cpp(79): warning C4244
   HelloTriangle_2.cpp
   HelloWindow.cpp
   main.cpp
+c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
+  d:\opengl learning\external libs\glad\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
+  MaterialExample.cpp
+c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
+  d:\opengl learning\external libs\glad\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
   SceneOrigin.cpp
   SceneOriginTest.cpp
   Shader.cpp
@@ -27,10 +32,10 @@ d:\opengl learning\openglcourseapp\openglcourseapp\camera.cpp(79): warning C4244
 d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice1.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   ShaderExercice2.cpp
 d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice2.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  ShaderExercice3.cpp
-d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice3.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Generating Code...
   Compiling...
+  ShaderExercice3.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice3.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   stb_image.cpp
   TextureExample.cpp
   TextureExercice1.cpp
