@@ -21,17 +21,17 @@ d:\opengl learning\openglcourseapp\openglcourseapp\camera.cpp(79): warning C4244
   main.cpp
 c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
   d:\opengl learning\external libs\glad\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
-d:\opengl learning\openglcourseapp\openglcourseapp\materialexample.cpp(276): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+d:\opengl learning\openglcourseapp\openglcourseapp\materialexample.cpp(271): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\opengl learning\openglcourseapp\openglcourseapp\materialexample.cpp(277): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+d:\opengl learning\openglcourseapp\openglcourseapp\materialexample.cpp(272): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\opengl learning\openglcourseapp\openglcourseapp\materialexample.cpp(278): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+d:\opengl learning\openglcourseapp\openglcourseapp\materialexample.cpp(273): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
@@ -39,17 +39,17 @@ d:\opengl learning\openglcourseapp\openglcourseapp\materialexample.cpp(278): war
   MaterialExample.cpp
 c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
   d:\opengl learning\external libs\glad\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
-d:\opengl learning\openglcourseapp\openglcourseapp\materialexample.cpp(276): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+d:\opengl learning\openglcourseapp\openglcourseapp\materialexample.cpp(271): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\opengl learning\openglcourseapp\openglcourseapp\materialexample.cpp(277): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+d:\opengl learning\openglcourseapp\openglcourseapp\materialexample.cpp(272): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\opengl learning\openglcourseapp\openglcourseapp\materialexample.cpp(278): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+d:\opengl learning\openglcourseapp\openglcourseapp\materialexample.cpp(273): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float

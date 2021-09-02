@@ -65,10 +65,17 @@ class MaterialExample {
 			"FragColor = vec4(result, 1.0);"
 		"}";
 	const string lightFragmentShaderSource = "#version 330 core\n"
+		"struct Light {"
+			"vec3 position;"
+			"vec3 ambient;"
+			"vec3 diffuse;"
+			"vec3 specular;"
+		"};"
+		"uniform Light light; "
 		"out vec4 FragColor;\n"
 		"void main()\n"
 		"{\n"
-		"	FragColor = vec4(1.0);\n"
+		"	FragColor = vec4( light.ambient + light.diffuse + light.specular,1.0);\n"
 		"}\n";
 
 
@@ -191,6 +198,7 @@ public:
 		fragmentShader.setVec3("light.ambient", glm::vec3(0.2f, 0.2f, 0.2f));
 		fragmentShader.setVec3("light.diffuse", glm::vec3(0.5f, 0.5f, 0.5f)); // darkened
 		fragmentShader.setVec3("light.specular", glm::vec3(1.0f, 1.0f, 1.0f));
+		
 
 
 
@@ -234,6 +242,12 @@ public:
 		lightVertexShader.setMat4("projection", projection);
 		lightVertexShader.setMat4("view", cam.getViewMatrix());
 
+
+		lightFragmentShader.setVec3("light.ambient", glm::vec3(0.2f, 0.2f, 0.2f));
+		lightFragmentShader.setVec3("light.diffuse", glm::vec3(0.5f, 0.5f, 0.5f)); // darkened
+		lightFragmentShader.setVec3("light.specular", glm::vec3(1.0f, 1.0f, 1.0f));
+
+
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
 
@@ -253,6 +267,13 @@ public:
 
 			origin.displayOrigin(cam.getViewMatrix(), cam.getProjection());
 
+			glm::vec3 lightColor;
+			lightColor.x = sin(glfwGetTime() * 2.0f);
+			lightColor.y = sin(glfwGetTime() * 0.7f);
+			lightColor.z = sin(glfwGetTime() * 1.3f);
+			glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f);
+			glm::vec3 ambientColor = diffuseColor * glm::vec3(0.2f);
+
 
 			glBindVertexArray(lightVAO);
 			lightVertexShader.useProgram();
@@ -260,6 +281,8 @@ public:
 			//lightVertexShader.setMat4("model", tmpLightModel);
 			lightVertexShader.setMat4("view", cam.getViewMatrix());
 			lightVertexShader.setMat4("projection", cam.getProjection());
+			lightFragmentShader.setVec3("light.ambient", ambientColor);
+			lightFragmentShader.setVec3("light.diffuse", diffuseColor);
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 
 			glBindVertexArray(VAO);
@@ -272,12 +295,7 @@ public:
 			vertexShader.setMat4("projection", cam.getProjection());
 			fragmentShader.setVec3("lightPos", lightPos);
 			fragmentShader.setVec3("viewPos", cam.getPosition());
-			glm::vec3 lightColor;
-			lightColor.x = sin(glfwGetTime() * 2.0f);
-			lightColor.y = sin(glfwGetTime() * 0.7f);
-			lightColor.z = sin(glfwGetTime() * 1.3f);
-			glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f);
-			glm::vec3 ambientColor = diffuseColor * glm::vec3(0.2f);
+			
 			fragmentShader.setVec3("light.ambient", ambientColor);
 			fragmentShader.setVec3("light.diffuse", diffuseColor);
 			vertexShader.setMat4("TranspInvModel", glm::mat3(transpose(inverse(tmpModel))));
