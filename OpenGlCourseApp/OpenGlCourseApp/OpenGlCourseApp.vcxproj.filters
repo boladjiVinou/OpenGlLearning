@@ -153,12 +153,4 @@
       <Filter>Source Files\Camera</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Materials_Example.fs">
-      <Filter>Source Files\Materials</Filter>
-    </None>
-    <None Include="Materials_Example.vs">
-      <Filter>Source Files\Materials</Filter>
-    </None>
-  </ItemGroup>
 </Project>

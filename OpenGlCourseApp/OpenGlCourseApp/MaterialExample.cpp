@@ -201,7 +201,7 @@ public:
 		glEnableVertexAttribArray(1);
 
 		glm::mat4 model = glm::mat4(1.0f);
-		model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		//model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 		glm::mat4 projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
 
 		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -242,7 +242,7 @@ public:
 		SceneOrigin origin;
 
 		glEnable(GL_DEPTH_TEST);
-		float radius = 3.0f;
+		float radius = 1.5f;
 		while (!glfwWindowShouldClose(window))
 		{
 			processInput(window);
@@ -265,14 +265,21 @@ public:
 			glBindVertexArray(VAO);
 			vertexShader.useProgram();
 			float angle = (float)glfwGetTime()*glm::radians(10.0f);
-			//glm::mat4 tmpModel = glm::rotate(model, angle, glm::vec3(1.0f, 0.3f, 0.5f));
-
-			glm::mat4 tmpModel = glm::translate(model, glm::vec3(radius*cos(angle), 0.0f, radius*sin(angle)));
+			
+			glm::mat4 tmpModel = glm::translate(model, glm::vec3(-radius*cos(angle) + lightPos.x, lightPos.y/2.0f +0.3f, -radius*sin(angle)+lightPos.z));
 			vertexShader.setMat4("model", tmpModel);
 			vertexShader.setMat4("view", cam.getViewMatrix());
 			vertexShader.setMat4("projection", cam.getProjection());
 			fragmentShader.setVec3("lightPos", lightPos);
 			fragmentShader.setVec3("viewPos", cam.getPosition());
+			glm::vec3 lightColor;
+			lightColor.x = sin(glfwGetTime() * 2.0f);
+			lightColor.y = sin(glfwGetTime() * 0.7f);
+			lightColor.z = sin(glfwGetTime() * 1.3f);
+			glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f);
+			glm::vec3 ambientColor = diffuseColor * glm::vec3(0.2f);
+			fragmentShader.setVec3("light.ambient", ambientColor);
+			fragmentShader.setVec3("light.diffuse", diffuseColor);
 			vertexShader.setMat4("TranspInvModel", glm::mat3(transpose(inverse(tmpModel))));
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 
