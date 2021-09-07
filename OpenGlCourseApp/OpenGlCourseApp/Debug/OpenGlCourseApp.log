@@ -18,24 +18,12 @@ d:\opengl learning\openglcourseapp\openglcourseapp\camera.cpp(79): warning C4244
   HelloTriangle_1.cpp
   HelloTriangle_2.cpp
   HelloWindow.cpp
+  LightingMapsExample.cpp
+c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
+  d:\opengl learning\external libs\glad\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
   main.cpp
 c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
   d:\opengl learning\external libs\glad\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
-d:\opengl learning\openglcourseapp\openglcourseapp\materialexample.cpp(306): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-d:\opengl learning\openglcourseapp\openglcourseapp\materialexample.cpp(307): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-d:\opengl learning\openglcourseapp\openglcourseapp\materialexample.cpp(308): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
   MaterialExample.cpp
 c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
   d:\opengl learning\external libs\glad\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
@@ -60,10 +48,10 @@ d:\opengl learning\openglcourseapp\openglcourseapp\materialexample.cpp(308): war
   ShaderExample.cpp
   ShaderExercice1.cpp
 d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice1.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  ShaderExercice2.cpp
-d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice2.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Generating Code...
   Compiling...
+  ShaderExercice2.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice2.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   ShaderExercice3.cpp
 d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice3.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   stb_image.cpp

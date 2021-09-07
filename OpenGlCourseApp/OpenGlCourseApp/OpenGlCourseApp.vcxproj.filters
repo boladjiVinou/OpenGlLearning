@@ -55,6 +55,9 @@
     <Filter Include="Source Files\Materials">
       <UniqueIdentifier>{5a772640-0539-4354-8fe1-9c67d54e4f17}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\LightingMaps">
+      <UniqueIdentifier>{262a00f7-5975-437e-9f37-450cf48506ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\External Libs\glad\src\glad.c">
@@ -143,6 +146,9 @@
     </ClCompile>
     <ClCompile Include="MaterialExample.cpp">
       <Filter>Source Files\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="LightingMapsExample.cpp">
+      <Filter>Source Files\LightingMaps</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
