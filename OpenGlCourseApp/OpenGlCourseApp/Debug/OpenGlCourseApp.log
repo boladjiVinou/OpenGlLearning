@@ -59,6 +59,7 @@ d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice3.cpp(5): warni
   TextureExercice1.cpp
   TextureExercice2.cpp
   TextureExercice3.cpp
+  TextureLoader.cpp
   TransformationExample.cpp
   TransformationExercice.cpp
   Generating Code...

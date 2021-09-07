@@ -150,6 +150,9 @@
     <ClCompile Include="LightingMapsExample.cpp">
       <Filter>Source Files\LightingMaps</Filter>
     </ClCompile>
+    <ClCompile Include="TextureLoader.cpp">
+      <Filter>Source Files\Textures</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stb_image.h">
