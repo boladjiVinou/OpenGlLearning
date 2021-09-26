@@ -8,9 +8,10 @@
 #include "Camera.h"
 #include "SceneOrigin.cpp"
 #include "TextureLoader.cpp"
+#include <glm/gtx/string_cast.hpp>
 
 //#include "stb_image.h"
-class LightingMapsExample {
+class DirectionalLightExample {
 	const string vertexShaderSource = "#version 330 core \n"
 		"layout(location = 0) in vec3 aPos;"
 		"layout(location = 1) in vec3 aNormal;"
@@ -30,15 +31,14 @@ class LightingMapsExample {
 		"TexCoords = aTexCoords;"
 		"}";
 
-	const string fragmentShaderSource = "#version 330 core \n"
+	const string directionalLightFragmentShaderSource = "#version 330 core \n"
 		"struct Material {"
 		"sampler2D diffuse;"
 		"sampler2D specular;"
 		"float shininess;"
-		"sampler2D emission;"
 		"};"
 		"struct Light {"
-		"vec3 position;"
+		"vec3 direction;"
 		"vec3 ambient;"
 		"vec3 diffuse;"
 		"vec3 specular;"
@@ -56,7 +56,7 @@ class LightingMapsExample {
 		"vec3 ambient = light.ambient * vec3(texture(material.diffuse, TexCoords));"
 		// diffuse
 		"vec3 norm = normalize(Normal);"
-		"vec3 lightDir = normalize(lightPos - FragPos);"
+		"vec3 lightDir = normalize(-light.direction);"
 		"float diff = max(dot(norm, lightDir), 0.0);"
 		"vec3 diffTextures = vec3(texture(material.diffuse,TexCoords));"
 		"vec3 diffuse = light.diffuse * diff * diffTextures; "
@@ -65,29 +65,57 @@ class LightingMapsExample {
 		"vec3 reflectDir = reflect(-lightDir, norm);"
 		"float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);"
 		"vec3 specTextures = vec3(texture(material.specular,TexCoords));"
-		/*"if(specTextures.x > 0){"//wood steel inversion
-		"specTextures.x = 0;"
-		"}"
-		"else{"
-		"specTextures.x = diffTextures.x;"
-		"}"
-		"if(specTextures.y  > 0){"
-		"specTextures.y = 0;"
-		"}"
-		"else{"
-		"specTextures.y = diffTextures.y;"
-		"}"
-		"if(specTextures.z > 0){"
-		"specTextures.z = 0;"
-		"}"
-		"else{"
-		"specTextures.z = diffTextures.z;"
-		"}"*/
 		"vec3 specular = light.specular * spec * specTextures;"
-		/*"vec3 emission =  vec3(texture(material.emission, TexCoords));"*/ //emission exercice
 		"vec3 result = ambient + diffuse + specular;"
-		"FragColor = vec4(result, 1.0);"// vec4(result, 1.0);
+		"FragColor = vec4(result, 1.0);"
 		"}";
+
+	const string pointLightFragmentShaderSource = "#version 330 core \n"
+		"struct Material {"
+		"sampler2D diffuse;"
+		"sampler2D specular;"
+		"float shininess;"
+		"};"
+		"struct Light {"
+		"vec3 position;"
+		"vec3 ambient;"
+		"vec3 diffuse;"
+		"vec3 specular;"
+		"float constant;"
+		"float linear;"
+		"float quadratic;"
+		"};"
+		"uniform Light light; "
+		"out vec4 FragColor;"
+		"uniform vec3 lightPos;"
+		"uniform vec3 viewPos;"
+		"uniform Material material;"
+		"in vec3 Normal;"
+		"in vec3 FragPos;"
+		"in vec2 TexCoords;\n"
+		"void main()"
+		"{"
+		"vec3 ambient = light.ambient * vec3(texture(material.diffuse, TexCoords));"
+		// diffuse
+		"vec3 norm = normalize(Normal);"
+		"vec3 lightDir = normalize(light.position - FragPos);"
+		"float diff = max(dot(norm, lightDir), 0.0);"
+		"vec3 diffTextures = vec3(texture(material.diffuse,TexCoords));"
+		"vec3 diffuse = light.diffuse * diff * diffTextures; "
+		// specular
+		"vec3 viewDir = normalize(viewPos - FragPos);"
+		"vec3 reflectDir = reflect(-lightDir, norm);"
+		"float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);"
+		"vec3 specTextures = vec3(texture(material.specular,TexCoords));"
+		"vec3 specular = light.specular * spec * specTextures;"
+		"float distance = length(light.position - FragPos);"
+		"float attenuation = 1.0 / (light.constant + light.linear * distance +"
+		"                           light.quadratic * (distance * distance));"
+
+		"vec3 result =( ambient + diffuse + specular)*attenuation;"
+		"FragColor = vec4(result, 1.0);"
+		"}";
+
 	const string lightFragmentShaderSource = "#version 330 core\n"
 		"struct Light {"
 		"vec3 position;"
@@ -101,8 +129,6 @@ class LightingMapsExample {
 		"{\n"
 		"	FragColor = vec4( light.ambient + light.diffuse + light.specular,1.0);\n"
 		"}\n";
-
-
 	static void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 	{
 		glViewport(0, 0, width, height);
@@ -111,6 +137,45 @@ class LightingMapsExample {
 	{
 		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 			glfwSetWindowShouldClose(window, true);
+ 	}
+    void processInputForLight(GLFWwindow *window, glm::vec3& lightPos, const glm::vec3& camDirection)
+	{
+		float delta = 0.001f;
+		glm::vec3 res = lightPos;
+		if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+		{
+			res += (camDirection * delta);
+		}
+		if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+		{
+			res -= (camDirection * delta);
+		}
+		if (glfwGetKey(window, GLFW_KEY_RIGHT_SHIFT) == GLFW_PRESS)
+		{
+			if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+			{
+				res.y += delta;
+			}
+			if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+			{
+				res.y -= delta;
+			}
+		}
+		else 
+		{
+			glm::vec3 normal = glm::cross(camDirection, glm::vec3(0, 1, 0));
+			if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+			{
+				res -= (normal* delta);
+			}
+			if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+			{
+				res += (normal* delta);
+			}
+		}
+		lightPos.x = res.x;
+		lightPos.y = res.y;
+		lightPos.z = res.z;
 	}
 
 public:
@@ -150,7 +215,7 @@ public:
 
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 
-		
+
 
 		float vertices[] = {
 		 -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f,  0.0f,
@@ -211,10 +276,6 @@ public:
 
 		glBindVertexArray(VAO);
 
-
-
-
-
 		TCHAR buffer[MAX_PATH] = { 0 };
 		GetModuleFileName(NULL, buffer, MAX_PATH);
 
@@ -222,7 +283,7 @@ public:
 		unsigned int shaderProgram = glCreateProgram();
 		vertexShader.AttachShaderTo(shaderProgram);
 
-		Shader fragmentShader = Shader(fragmentShaderSource, GL_FRAGMENT_SHADER);
+		Shader fragmentShader = Shader(pointLightFragmentShaderSource, GL_FRAGMENT_SHADER);
 		fragmentShader.AttachShaderTo(shaderProgram);
 		fragmentShader.useProgram();
 
@@ -230,22 +291,22 @@ public:
 
 		unsigned int diffuseMap = textureLoader.loadTexture("./Textures/container2.png");
 		unsigned int specularMap = textureLoader.loadTexture("./Textures/container2_specular.png");
-		unsigned int emissionMap = textureLoader.loadTexture("./Textures/matrix.jpg");
 
 		fragmentShader.setVec3("lightColor", glm::vec3(0.1f));
 		fragmentShader.setFloat("material.shininess", 32.0f);
 		fragmentShader.setInt("material.diffuse", 0);
 		fragmentShader.setInt("material.specular", 1);
-		fragmentShader.setInt("material.emission", 2);
 		fragmentShader.setVec3("light.ambient", glm::vec3(0.2f));
 		fragmentShader.setVec3("light.diffuse", glm::vec3(0.5f, 0.5f, 0.5f)); // darkened
 		fragmentShader.setVec3("light.specular", glm::vec3(1.0f, 1.0f, 1.0f));
-		
+		//directional light//fragmentShader.setVec3("light.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
+		/*pointlight*/fragmentShader.setVec3("light.position", glm::vec3(1.2f, 1.0f, 2.0f));
+		/*pointlight*/fragmentShader.setFloat("light.constant", 1.0f);
+		/*pointlight*/fragmentShader.setFloat("light.linear", 0.09f);
+		/*pointlight*/fragmentShader.setFloat("light.quadratic", 0.032f);
 
 
-
-
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8* sizeof(float), (void*)0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
 
 		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
@@ -267,6 +328,9 @@ public:
 		vertexShader.setMat4("projection", projection);
 		vertexShader.setMat4("view", cam.getViewMatrix());
 
+		glm::mat4 lightModel = glm::mat4(1.0f);
+		glm::vec3 lightPos = glm::vec3(1.2f, 1.0f, 2.0f);
+
 		glBindVertexArray(lightVAO);
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
@@ -275,9 +339,6 @@ public:
 		lightVertexShader.AttachShaderTo(lightShaderProgram);
 		Shader lightFragmentShader = Shader(lightFragmentShaderSource, GL_FRAGMENT_SHADER);
 		lightFragmentShader.AttachShaderTo(lightShaderProgram);
-
-		glm::mat4 lightModel = glm::mat4(1.0f);
-		glm::vec3 lightPos = glm::vec3(1.2f, 1.0f, 2.0f);
 
 		lightModel = glm::translate(lightModel, lightPos);
 		lightModel = glm::scale(lightModel, glm::vec3(0.1f));
@@ -296,13 +357,27 @@ public:
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
 
-		
+
 
 		SceneOrigin origin;
 
 		glEnable(GL_DEPTH_TEST);
 		glEnable(GL_TEXTURE_2D);
 		float radius = 1.5f;
+
+		glm::vec3 cubePositions[] = {
+			glm::vec3(0.0f, 0.0f, 0.0f),
+			glm::vec3(2.0f, 5.0f, -15.0f),
+			glm::vec3(-1.5f, -2.2f, -2.5f),
+			glm::vec3(-3.8f, -2.0f, -12.3f),
+			glm::vec3(2.4f, -0.4f, -3.5f),
+			glm::vec3(-1.7f, 3.0f, -7.5f),
+			glm::vec3(1.3f, -2.0f, -2.5f),
+			glm::vec3(1.5f, 2.0f, -2.5f),
+			glm::vec3(1.5f, 0.2f, -1.5f),
+			glm::vec3(-1.3f, 1.0f, -1.5f)
+		};
+
 		while (!glfwWindowShouldClose(window))
 		{
 			processInput(window);
@@ -313,35 +388,49 @@ public:
 
 			origin.displayOrigin(cam.getViewMatrix(), cam.getProjection());
 
-
 			glBindVertexArray(lightVAO);
 			lightVertexShader.useProgram();
-
+			processInputForLight(window, lightPos, cam.getDirection());
+			glm::mat4 tmpLightModel = glm::translate(glm::mat4(1.0f), lightPos);
+			tmpLightModel = glm::scale(tmpLightModel, glm::vec3(0.1f));
+			lightVertexShader.setMat4("model", tmpLightModel);
 			lightVertexShader.setMat4("view", cam.getViewMatrix());
 			lightVertexShader.setMat4("projection", cam.getProjection());
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 
-			glBindVertexArray(VAO);		
+			glBindVertexArray(VAO);
 			vertexShader.useProgram();
 			float angle = (float)glfwGetTime()*glm::radians(10.0f);
 
-			glm::mat4 tmpModel = glm::translate(model, glm::vec3(-radius * cos(angle) + lightPos.x, lightPos.y / 2.0f + 0.3f, -radius * sin(angle) + lightPos.z));
-			vertexShader.setMat4("model", tmpModel);
+			//glm::mat4 tmpModel = glm::translate(model, glm::vec3(-radius * cos(angle) + lightPos.x, lightPos.y / 2.0f + 0.3f, -radius * sin(angle) + lightPos.z));
+			vertexShader.setMat4("model", model);
 			vertexShader.setMat4("view", cam.getViewMatrix());
 			vertexShader.setMat4("projection", cam.getProjection());
 
-			fragmentShader.setVec3("lightPos", lightPos);
 			fragmentShader.setVec3("viewPos", cam.getPosition());
+			fragmentShader.setVec3("light.position", lightPos);
 
-			vertexShader.setMat4("TranspInvModel", glm::mat3(transpose(inverse(tmpModel))));
-			
+			vertexShader.setMat4("TranspInvModel", glm::mat3(transpose(inverse(model))));
+
+
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, diffuseMap);
 			glActiveTexture(GL_TEXTURE1);
 			glBindTexture(GL_TEXTURE_2D, specularMap);
-			glActiveTexture(GL_TEXTURE2);
-			glBindTexture(GL_TEXTURE_2D, emissionMap);
 			glDrawArrays(GL_TRIANGLES, 0, 36);
+
+
+			for (unsigned int i = 0; i < 10; i++)
+			{
+				glm::mat4 tmpModel = glm::mat4(1.0f);
+				tmpModel = glm::translate(tmpModel, cubePositions[i]);
+				float angle = 20.0f * i;
+				tmpModel = glm::rotate(tmpModel, glm::radians(angle),
+					glm::vec3(1.0f, 0.3f, 0.5f));
+				vertexShader.setMat4("model", tmpModel);
+				vertexShader.setMat4("TranspInvModel", glm::mat3(transpose(inverse(tmpModel))));
+				glDrawArrays(GL_TRIANGLES, 0, 36);
+			}
 
 			glfwSwapBuffers(window);
 			glfwPollEvents();

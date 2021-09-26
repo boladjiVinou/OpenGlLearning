@@ -9,16 +9,20 @@ void Camera:: updateLookat()
 }
 void Camera::updateRotation()
 {
-	glm::vec3 direction = glm::vec3();
 	float radYaw = glm::radians(yaw);
 	float radPitch = glm::radians(pitch);
 	direction.x = cos(radYaw)* cos(radPitch);
 	direction.y = sin(radPitch);
 	direction.z = sin(radYaw)* cos(radPitch);
-	cameraFront = glm::normalize(direction);
+	direction = glm::normalize(direction);
+	cameraFront = direction;
 	cameraFront.x *= windowsWidth;
 	cameraFront.y *= windowsWidth;
 	cameraFront.z *= windowsWidth;
+}
+glm::vec3 Camera::getDirection()
+{
+	return direction;
 }
 
 Camera::Camera(GLFWwindow* window,glm::vec3 position, glm::vec3 target, glm::vec3 up, float width, float height)

@@ -184,6 +184,7 @@
     <ClCompile Include="HelloTriangle_1.cpp" />
     <ClCompile Include="HelloTriangle_2.cpp" />
     <ClCompile Include="HelloWindow.cpp" />
+    <ClCompile Include="LightCastersExample.cpp" />
     <ClCompile Include="LightingMapsExample.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MaterialExample.cpp" />

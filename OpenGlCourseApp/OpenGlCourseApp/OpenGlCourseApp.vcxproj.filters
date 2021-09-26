@@ -58,6 +58,9 @@
     <Filter Include="Source Files\LightingMaps">
       <UniqueIdentifier>{262a00f7-5975-437e-9f37-450cf48506ea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\LightCasters">
+      <UniqueIdentifier>{81ef7605-73c1-4430-95a3-5bbbb33ec7ee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\External Libs\glad\src\glad.c">
@@ -152,6 +155,9 @@
     </ClCompile>
     <ClCompile Include="TextureLoader.cpp">
       <Filter>Source Files\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="LightCastersExample.cpp">
+      <Filter>Source Files\LightCasters</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

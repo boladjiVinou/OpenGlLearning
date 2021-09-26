@@ -10,6 +10,7 @@ private:
 	glm::vec3 up;
 	glm::vec3 target;
 	glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+	glm::vec3 direction;
 	glm::mat4 lookAt, projection;
 
 	static float lastX;
@@ -37,4 +38,6 @@ public:
 	glm::mat4 getProjection();
 	glm::mat4 getViewMatrix();
 	glm::vec3 getPosition();
+	glm::vec3 getDirection();
+
 };
