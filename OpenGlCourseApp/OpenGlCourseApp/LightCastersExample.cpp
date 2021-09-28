@@ -8,6 +8,7 @@
 #include "Camera.h"
 #include "SceneOrigin.cpp"
 #include "TextureLoader.cpp"
+#include <glm/gtc/matrix_inverse.hpp>
 #include <glm/gtx/string_cast.hpp>
 
 //#include "stb_image.h"
@@ -20,14 +21,13 @@ class DirectionalLightExample {
 		"out vec3 FragPos;"
 		"out vec2 TexCoords;"
 		"uniform mat4 model;"
-		"uniform mat3 TranspInvModel;"
 		"uniform mat4 view;"
 		"uniform mat4 projection;"
 		"void main()"
 		"{"
 		"gl_Position = projection * view * model * vec4(aPos, 1.0);"
 		"FragPos = vec3(model * vec4(aPos, 1.0));"
-		"Normal = TranspInvModel * aNormal;"
+		"Normal =  mat3(transpose(inverse(model))) * aNormal;"
 		"TexCoords = aTexCoords;"
 		"}";
 
@@ -116,19 +116,63 @@ class DirectionalLightExample {
 		"FragColor = vec4(result, 1.0);"
 		"}";
 
-	const string lightFragmentShaderSource = "#version 330 core\n"
+	const string flashLightFragmentShaderSource = "#version 330 core \n"
+		"struct Material {"
+		"sampler2D diffuse;"
+		"sampler2D specular;"
+		"float shininess;"
+		"};"
 		"struct Light {"
 		"vec3 position;"
+		"vec3 direction;"
+		"float cutOff;"
 		"vec3 ambient;"
 		"vec3 diffuse;"
 		"vec3 specular;"
+		"float constant;"
+		"float linear;"
+		"float quadratic;"
 		"};"
 		"uniform Light light; "
-		"out vec4 FragColor;\n"
-		"void main()\n"
-		"{\n"
-		"	FragColor = vec4( light.ambient + light.diffuse + light.specular,1.0);\n"
-		"}\n";
+		"out vec4 FragColor;"
+		"uniform vec3 lightPos;"
+		"uniform vec3 viewPos;"
+		"uniform Material material;"
+		"in vec3 Normal;"
+		"in vec3 FragPos;"
+		"in vec2 TexCoords;\n"
+		"void main()"
+		"{"
+		"vec3 ambient = light.ambient * vec3(texture(material.diffuse, TexCoords));"
+		// diffuse
+		"vec3 norm = normalize(Normal);"
+		"vec3 lightDir = normalize(light.position - FragPos);"
+		"float theta = dot(lightDir, normalize(-light.direction));"
+		"float diff = max(dot(norm, lightDir), 0.0);"
+		"vec3 result;"
+		"if(theta > light.cutOff)"
+		"{"
+			"vec3 diffTextures = vec3(texture(material.diffuse,TexCoords));"
+			"vec3 diffuse = light.diffuse * diff * diffTextures; "
+			// specular
+			"vec3 viewDir = normalize(viewPos - FragPos);"
+			"vec3 reflectDir = reflect(-lightDir, norm);"
+			"float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);"
+			"vec3 specTextures = vec3(texture(material.specular,TexCoords));"
+			"vec3 specular = light.specular * spec * specTextures;"
+			"float distance = length(light.position - FragPos);"
+			"float attenuation = 1.0 / (light.constant + light.linear * distance +"
+			"                           light.quadratic * (distance * distance));"
+			"diffuse *= attenuation;"
+			"specular *= attenuation;"
+			"result =( ambient + diffuse + specular);"
+		"}"
+		"else"
+		"{"
+			"result = ambient;"
+		"}"
+		"FragColor = vec4(result, 1.0);"
+		"}";
 	static void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 	{
 		glViewport(0, 0, width, height);
@@ -138,10 +182,10 @@ class DirectionalLightExample {
 		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 			glfwSetWindowShouldClose(window, true);
  	}
-    void processInputForLight(GLFWwindow *window, glm::vec3& lightPos, const glm::vec3& camDirection)
+    void processInputForMovable(GLFWwindow *window, glm::vec3& movePosition, const glm::vec3& camDirection)
 	{
 		float delta = 0.001f;
-		glm::vec3 res = lightPos;
+		glm::vec3 res = movePosition;
 		if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
 		{
 			res += (camDirection * delta);
@@ -173,9 +217,9 @@ class DirectionalLightExample {
 				res += (normal* delta);
 			}
 		}
-		lightPos.x = res.x;
-		lightPos.y = res.y;
-		lightPos.z = res.z;
+		movePosition.x = res.x;
+		movePosition.y = res.y;
+		movePosition.z = res.z;
 	}
 
 public:
@@ -260,19 +304,14 @@ public:
 		-0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  0.0f,
 		-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  1.0f
 		};
-		unsigned int indices[] = { 0, 1, 3, 3, 2, 1 };
-		unsigned int VAO, lightVAO;
+		//unsigned int indices[] = { 0, 1, 3, 3, 2, 1 };
+		unsigned int VAO;
 		glGenVertexArrays(1, &VAO);
-		glGenVertexArrays(1, &lightVAO);
 		glBindVertexArray(VAO);
 		unsigned int VBO;
 		glGenBuffers(1, &VBO);
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-		unsigned int EBO;
-		glGenBuffers(1, &EBO);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 		glBindVertexArray(VAO);
 
@@ -283,7 +322,7 @@ public:
 		unsigned int shaderProgram = glCreateProgram();
 		vertexShader.AttachShaderTo(shaderProgram);
 
-		Shader fragmentShader = Shader(pointLightFragmentShaderSource, GL_FRAGMENT_SHADER);
+		Shader fragmentShader = Shader(flashLightFragmentShaderSource, GL_FRAGMENT_SHADER);
 		fragmentShader.AttachShaderTo(shaderProgram);
 		fragmentShader.useProgram();
 
@@ -304,7 +343,8 @@ public:
 		/*pointlight*/fragmentShader.setFloat("light.constant", 1.0f);
 		/*pointlight*/fragmentShader.setFloat("light.linear", 0.09f);
 		/*pointlight*/fragmentShader.setFloat("light.quadratic", 0.032f);
-
+		
+		/*flashLight*/fragmentShader.setFloat("light.cutOff", glm::cos(glm::radians(12.5f)));
 
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
@@ -327,36 +367,6 @@ public:
 		vertexShader.setMat3("TranspInvModel", glm::mat3(transpose(inverse(model))));
 		vertexShader.setMat4("projection", projection);
 		vertexShader.setMat4("view", cam.getViewMatrix());
-
-		glm::mat4 lightModel = glm::mat4(1.0f);
-		glm::vec3 lightPos = glm::vec3(1.2f, 1.0f, 2.0f);
-
-		glBindVertexArray(lightVAO);
-		glBindBuffer(GL_ARRAY_BUFFER, VBO);
-
-		unsigned int lightShaderProgram = glCreateProgram();
-		Shader lightVertexShader = Shader(vertexShaderSource, GL_VERTEX_SHADER);
-		lightVertexShader.AttachShaderTo(lightShaderProgram);
-		Shader lightFragmentShader = Shader(lightFragmentShaderSource, GL_FRAGMENT_SHADER);
-		lightFragmentShader.AttachShaderTo(lightShaderProgram);
-
-		lightModel = glm::translate(lightModel, lightPos);
-		lightModel = glm::scale(lightModel, glm::vec3(0.1f));
-
-		lightVertexShader.useProgram();
-		lightVertexShader.setMat4("model", lightModel);
-		lightVertexShader.setMat4("projection", projection);
-		lightVertexShader.setMat4("view", cam.getViewMatrix());
-
-
-		lightFragmentShader.setVec3("light.ambient", glm::vec3(0.2f, 0.2f, 0.2f));
-		lightFragmentShader.setVec3("light.diffuse", glm::vec3(0.5f, 0.5f, 0.5f)); // darkened
-		lightFragmentShader.setVec3("light.specular", glm::vec3(1.0f, 1.0f, 1.0f));
-
-
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
-		glEnableVertexAttribArray(0);
-
 
 
 		SceneOrigin origin;
@@ -388,47 +398,33 @@ public:
 
 			origin.displayOrigin(cam.getViewMatrix(), cam.getProjection());
 
-			glBindVertexArray(lightVAO);
-			lightVertexShader.useProgram();
-			processInputForLight(window, lightPos, cam.getDirection());
-			glm::mat4 tmpLightModel = glm::translate(glm::mat4(1.0f), lightPos);
-			tmpLightModel = glm::scale(tmpLightModel, glm::vec3(0.1f));
-			lightVertexShader.setMat4("model", tmpLightModel);
-			lightVertexShader.setMat4("view", cam.getViewMatrix());
-			lightVertexShader.setMat4("projection", cam.getProjection());
-			glDrawArrays(GL_TRIANGLES, 0, 36);
-
 			glBindVertexArray(VAO);
 			vertexShader.useProgram();
 			float angle = (float)glfwGetTime()*glm::radians(10.0f);
 
-			//glm::mat4 tmpModel = glm::translate(model, glm::vec3(-radius * cos(angle) + lightPos.x, lightPos.y / 2.0f + 0.3f, -radius * sin(angle) + lightPos.z));
-			vertexShader.setMat4("model", model);
+		
 			vertexShader.setMat4("view", cam.getViewMatrix());
 			vertexShader.setMat4("projection", cam.getProjection());
 
 			fragmentShader.setVec3("viewPos", cam.getPosition());
-			fragmentShader.setVec3("light.position", lightPos);
-
-			vertexShader.setMat4("TranspInvModel", glm::mat3(transpose(inverse(model))));
+			fragmentShader.setVec3("light.position", cam.getPosition());
+			/*flashLight*/fragmentShader.setVec3("light.direction", cam.getDirection());
 
 
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, diffuseMap);
 			glActiveTexture(GL_TEXTURE1);
 			glBindTexture(GL_TEXTURE_2D, specularMap);
-			glDrawArrays(GL_TRIANGLES, 0, 36);
 
 
+			float time = glfwGetTime();
 			for (unsigned int i = 0; i < 10; i++)
 			{
 				glm::mat4 tmpModel = glm::mat4(1.0f);
 				tmpModel = glm::translate(tmpModel, cubePositions[i]);
-				float angle = 20.0f * i;
-				tmpModel = glm::rotate(tmpModel, glm::radians(angle),
-					glm::vec3(1.0f, 0.3f, 0.5f));
+				float angle = 20.0f * (i + 1);
+				tmpModel = glm::rotate(tmpModel, time*glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
 				vertexShader.setMat4("model", tmpModel);
-				vertexShader.setMat4("TranspInvModel", glm::mat3(transpose(inverse(tmpModel))));
 				glDrawArrays(GL_TRIANGLES, 0, 36);
 			}
 
