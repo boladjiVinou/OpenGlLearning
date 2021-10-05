@@ -13,6 +13,6 @@
 int main() 
 {
 	DirectionalLightExample example;
-	example.run();
+	example.runMultipleLight();
 	return 0;
 }
