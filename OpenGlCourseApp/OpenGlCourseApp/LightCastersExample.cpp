@@ -23,14 +23,15 @@ class DirectionalLightExample {
 		"uniform mat4 model;"
 		"uniform mat4 view;"
 		"uniform mat4 projection;"
+		"uniform mat3 invTransNormal;"
 		"void main()"
 		"{"
 		"gl_Position = projection * view * model * vec4(aPos, 1.0);"
 		"FragPos = vec3(model * vec4(aPos, 1.0));"
-		"Normal =  mat3(transpose(inverse(model))) * aNormal;"
+		"Normal =  invTransNormal * aNormal;"
 		"TexCoords = aTexCoords;"
 		"}";
-
+	//  mat3(transpose(inverse(model)))
 	const string directionalLightFragmentShaderSource = "#version 330 core \n"
 		"struct Material {"
 		"sampler2D diffuse;"
@@ -408,7 +409,7 @@ public:
 		unsigned int shaderProgram = glCreateProgram();
 		vertexShader.AttachShaderTo(shaderProgram);
 
-		Shader fragmentShader = Shader(flashLightFragmentShaderSource, GL_FRAGMENT_SHADER);
+		Shader fragmentShader = Shader(pointLightFragmentShaderSource, GL_FRAGMENT_SHADER);
 		fragmentShader.AttachShaderTo(shaderProgram);
 		fragmentShader.useProgram();
 
@@ -424,13 +425,13 @@ public:
 		fragmentShader.setVec3("light.ambient", glm::vec3(0.2f));
 		fragmentShader.setVec3("light.diffuse", glm::vec3(0.5f, 0.5f, 0.5f)); // darkened
 		fragmentShader.setVec3("light.specular", glm::vec3(1.0f, 1.0f, 1.0f));
-		//directional light//fragmentShader.setVec3("light.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
+		//directional light// fragmentShader.setVec3("light.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
 		/*pointlight*/fragmentShader.setVec3("light.position", glm::vec3(1.2f, 1.0f, 2.0f));
 		/*pointlight*/fragmentShader.setFloat("light.constant", 1.0f);
 		/*pointlight*/fragmentShader.setFloat("light.linear", 0.09f);
 		/*pointlight*/fragmentShader.setFloat("light.quadratic", 0.032f);
 		
-		/*flashLight*/fragmentShader.setFloat("light.cutOff", glm::cos(glm::radians(12.5f)));
+		/*flashLight*///fragmentShader.setFloat("light.cutOff", glm::cos(glm::radians(12.5f)));
 
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
@@ -450,7 +451,6 @@ public:
 		Camera cam = Camera(window, glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 1.0f, 0.0f), 800.0f, 600.0f);
 
 		vertexShader.setMat4("model", model);
-		vertexShader.setMat3("TranspInvModel", glm::mat3(transpose(inverse(model))));
 		vertexShader.setMat4("projection", projection);
 		vertexShader.setMat4("view", cam.getViewMatrix());
 
@@ -494,7 +494,7 @@ public:
 
 			fragmentShader.setVec3("viewPos", cam.getPosition());
 			fragmentShader.setVec3("light.position", cam.getPosition());
-			/*flashLight*/fragmentShader.setVec3("light.direction", cam.getDirection());
+			/*flashLight*///fragmentShader.setVec3("light.direction", cam.getDirection());
 
 
 			glActiveTexture(GL_TEXTURE0);
@@ -510,6 +510,7 @@ public:
 				tmpModel = glm::translate(tmpModel, cubePositions[i]);
 				float angle = 20.0f * (i + 1);
 				tmpModel = glm::rotate(tmpModel, time*glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+				vertexShader.setMat3("invTransNormal", glm::transpose(glm::inverse(glm::mat3(tmpModel))));
 				vertexShader.setMat4("model", tmpModel);
 				glDrawArrays(GL_TRIANGLES, 0, 36);
 			}
@@ -731,6 +732,7 @@ public:
 				float angle = 20.0f * (i + 1);
 				tmpModel = glm::rotate(tmpModel, time*glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
 				vertexShader.setMat4("model", tmpModel);
+				vertexShader.setMat3("invTransNormal", glm::transpose(glm::inverse(glm::mat3(tmpModel))));
 				glDrawArrays(GL_TRIANGLES, 0, 36);
 			}
 

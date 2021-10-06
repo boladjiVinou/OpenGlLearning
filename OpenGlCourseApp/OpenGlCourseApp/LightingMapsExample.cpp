@@ -263,7 +263,7 @@ public:
 		Camera cam = Camera(window, glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 1.0f, 0.0f), 800.0f, 600.0f);
 
 		vertexShader.setMat4("model", model);
-		vertexShader.setMat3("TranspInvModel", glm::mat3(transpose(inverse(model))));
+		vertexShader.setMat3("TranspInvModel", transpose(inverse(glm::mat3(model))));
 		vertexShader.setMat4("projection", projection);
 		vertexShader.setMat4("view", cam.getViewMatrix());
 
@@ -333,7 +333,7 @@ public:
 			fragmentShader.setVec3("lightPos", lightPos);
 			fragmentShader.setVec3("viewPos", cam.getPosition());
 
-			vertexShader.setMat4("TranspInvModel", glm::mat3(transpose(inverse(tmpModel))));
+			vertexShader.setMat4("TranspInvModel", transpose(inverse(glm::mat3(model))));
 			
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, diffuseMap);
