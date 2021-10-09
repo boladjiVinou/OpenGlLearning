@@ -13,6 +13,6 @@
 int main() 
 {
 	LightCastersExample example;
-	example.desert();
+	example.horror();
 	return 0;
 }
