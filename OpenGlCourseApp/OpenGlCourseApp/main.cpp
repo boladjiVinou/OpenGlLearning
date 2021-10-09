@@ -12,7 +12,7 @@
 #include "LightCastersExample.cpp"
 int main() 
 {
-	DirectionalLightExample example;
-	example.runMultipleLight();
+	LightCastersExample example;
+	example.desert();
 	return 0;
 }
