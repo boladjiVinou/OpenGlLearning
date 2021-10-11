@@ -1,19 +1,102 @@
-﻿  LightCastersExample.cpp
+﻿  glad.c
+  Camera.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\camera.cpp(42): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\opengl learning\openglcourseapp\openglcourseapp\camera.cpp(76): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\opengl learning\openglcourseapp\openglcourseapp\camera.cpp(77): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\opengl learning\openglcourseapp\openglcourseapp\camera.cpp(80): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\opengl learning\openglcourseapp\openglcourseapp\camera.cpp(81): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\opengl learning\openglcourseapp\openglcourseapp\camera.cpp(82): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\opengl learning\openglcourseapp\openglcourseapp\camera.cpp(83): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  ColorsExample.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\colorsexample.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  ColorsExercice1.cpp
+  ColorsExercice2.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\colorsexercice2.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  ColorsExercice3.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\colorsexercice3.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  CoordinateSystemExample.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\coordinatesystemexample.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  HelloRectangle.cpp
+  HelloTriangle.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\hellotriangle.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  HelloTriangle_3.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\hellotriangle_3.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  HelloTriangle_1.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\hellotriangle_1.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  HelloTriangle_2.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\hellotriangle_2.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  HelloWindow.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\hellowindow.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  LightCastersExample.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
   d:\opengl learning\external libs\glad\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
-d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(533): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(749): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(1027): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(1306): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(1583): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  Shader.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(236): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(452): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(730): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(1009): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(1286): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  LightingMapsExample.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\lightingmapsexample.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
+  d:\opengl learning\external libs\glad\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
   main.cpp
 c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
   d:\opengl learning\external libs\glad\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
-d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(533): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(749): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(1027): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(1306): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(1583): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  MaterialExample.cpp
+c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
+  d:\opengl learning\external libs\glad\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
+d:\opengl learning\openglcourseapp\openglcourseapp\materialexample.cpp(217): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\opengl learning\openglcourseapp\openglcourseapp\materialexample.cpp(218): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\opengl learning\openglcourseapp\openglcourseapp\materialexample.cpp(219): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Mesh.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\mesh.cpp(2): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\opengl learning\openglcourseapp\openglcourseapp\mesh.cpp(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\opengl learning\openglcourseapp\openglcourseapp\mesh.cpp(4): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  SceneOrigin.cpp
+  SceneOriginTest.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\sceneorigintest.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Shader.cpp
   Generating Code...
+  Compiling...
+  ShaderExample.cpp
+  ShaderExercice1.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice1.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice1.h(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  ShaderExercice2.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice2.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice2.h(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  ShaderExercice3.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice3.h(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  stb_image.cpp
+  Texture.cpp
+  TextureExample.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\textureexample.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  TextureExercice1.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\textureexercice1.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  TextureExercice2.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\textureexercice2.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  TextureExercice3.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\textureexercice3.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  TextureLoader.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\textureloader.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  TransformationExample.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\transformationexample.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  TransformationExercice.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\transformationexercice.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Vertex.cpp
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   OpenGlCourseApp.vcxproj -> D:\OPENGL LEARNING\OpenGlCourseApp\Debug\OpenGlCourseApp.exe

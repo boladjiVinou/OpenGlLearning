@@ -188,6 +188,7 @@
     <ClCompile Include="LightingMapsExample.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MaterialExample.cpp" />
+    <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="SceneOrigin.cpp" />
     <ClCompile Include="SceneOriginTest.cpp" />
     <ClCompile Include="Shader.cpp" />
@@ -196,6 +197,7 @@
     <ClCompile Include="ShaderExercice2.cpp" />
     <ClCompile Include="ShaderExercice3.cpp" />
     <ClCompile Include="stb_image.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TextureExample.cpp" />
     <ClCompile Include="TextureExercice1.cpp" />
     <ClCompile Include="TextureExercice2.cpp" />
@@ -203,10 +205,39 @@
     <ClCompile Include="TextureLoader.cpp" />
     <ClCompile Include="TransformationExample.cpp" />
     <ClCompile Include="TransformationExercice.cpp" />
+    <ClCompile Include="Vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="ColorsExample.h" />
+    <ClInclude Include="ColorsExercice1.h" />
+    <ClInclude Include="ColorsExercice2.h" />
+    <ClInclude Include="ColorsExercice3.h" />
+    <ClInclude Include="CoordinateSystemExample.h" />
+    <ClInclude Include="HelloRectangle.h" />
+    <ClInclude Include="HelloTriangle.h" />
+    <ClInclude Include="HelloTriangle_1.h" />
+    <ClInclude Include="HelloTriangle_2.h" />
+    <ClInclude Include="HelloTriangle_3.h" />
+    <ClInclude Include="HelloWindow.h" />
+    <ClInclude Include="LightCastersExample.h" />
+    <ClInclude Include="LightingMapsExample.h" />
+    <ClInclude Include="MaterialExample.h" />
+    <ClInclude Include="SceneOrigin.h" />
+    <ClInclude Include="SceneOriginTest.h" />
+    <ClInclude Include="Shader.h" />
+    <ClInclude Include="ShaderExample.h" />
+    <ClInclude Include="ShaderExercice1.h" />
+    <ClInclude Include="ShaderExercice2.h" />
+    <ClInclude Include="ShaderExercice3.h" />
     <ClInclude Include="stb_image.h" />
+    <ClInclude Include="TextureExample.h" />
+    <ClInclude Include="TextureExercice1.h" />
+    <ClInclude Include="TextureExercice2.h" />
+    <ClInclude Include="TextureExercice3.h" />
+    <ClInclude Include="TextureLoader.h" />
+    <ClInclude Include="TransformationExample.h" />
+    <ClInclude Include="TransformationExercice.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
