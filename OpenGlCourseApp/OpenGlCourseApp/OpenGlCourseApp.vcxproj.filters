@@ -61,6 +61,9 @@
     <Filter Include="Source Files\LightCasters">
       <UniqueIdentifier>{81ef7605-73c1-4430-95a3-5bbbb33ec7ee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ModelLoading">
+      <UniqueIdentifier>{a899fb91-552d-44d4-ae3b-48154a6d98e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\External Libs\glad\src\glad.c">

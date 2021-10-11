@@ -16,44 +16,7 @@ public:
 	unsigned int _programId;
 	unsigned int _shaderId;
 	// constructor reads and builds the shader
-	Shader(const char* shaderPath, GLenum type)
-	{
-		std::string shaderCode;
-		std::ifstream shaderFile;
-		// ensure ifstream objects can throw exceptions:
-		shaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-		try
-		{
-			// open files
-			shaderFile.open(shaderPath);
-			std::stringstream shaderStream;
-			// read file’s buffer contents into streams
-			shaderStream << shaderStream.rdbuf();
-			// close file handlers
-			shaderFile.close();
-			// convert stream into string
-			shaderCode = shaderStream.str();
-		}
-		catch (std::ifstream::failure e)
-		{
-			std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
-		}
-		const char* shaderCodePointer = shaderCode.c_str();
-		// 2. compile shaders
-		int success;
-		char infoLog[512];
-		_shaderId = glCreateShader(type);
-		glShaderSource(_shaderId, 1, &shaderCodePointer, NULL);
-		glCompileShader(_shaderId);
-		// print compile errors if any
-		glGetShaderiv(_shaderId, GL_COMPILE_STATUS, &success);
-		if (!success)
-		{
-			glGetShaderInfoLog(_shaderId, 512, NULL, infoLog);
-			std::cout << "ERROR::SHADER::COMPILATION_FAILED\n" <<
-				infoLog << std::endl;
-		};
-	}
+
 	Shader(string shaderContent, GLenum type) 
 	{
 		int success;
@@ -70,6 +33,31 @@ public:
 			std::cout << "ERROR::SHADER::COMPILATION_FAILED\n" <<
 				infoLog << std::endl;
 		};
+	}
+	static Shader FromFile(string shaderPath, GLenum type)
+	{
+		std::string shaderCode;
+		std::ifstream shaderFile;
+		// ensure ifstream objects can throw exceptions:
+		shaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+		try
+		{
+			// open files
+			shaderFile.open(shaderPath);
+			std::stringstream shaderStream;
+			// read file’s buffer contents into streams
+			shaderStream << shaderStream.rdbuf();
+			// close file handlers
+			shaderFile.close();
+			// convert stream into string
+			shaderCode = shaderStream.str();
+
+		}
+		catch (std::ifstream::failure e)
+		{
+			std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
+		}
+		return Shader(shaderCode, type);
 	}
 	// attach shader to program and destroy it
 	void AttachShaderTo(unsigned int programId) 

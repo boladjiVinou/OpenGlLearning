@@ -1,24 +1,4 @@
-﻿  glad.c
-  Camera.cpp
-d:\opengl learning\openglcourseapp\openglcourseapp\camera.cpp(42): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-d:\opengl learning\openglcourseapp\openglcourseapp\camera.cpp(76): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-d:\opengl learning\openglcourseapp\openglcourseapp\camera.cpp(77): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-d:\opengl learning\openglcourseapp\openglcourseapp\camera.cpp(80): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-d:\opengl learning\openglcourseapp\openglcourseapp\camera.cpp(81): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-d:\opengl learning\openglcourseapp\openglcourseapp\camera.cpp(82): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-d:\opengl learning\openglcourseapp\openglcourseapp\camera.cpp(83): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  ColorsExample.cpp
-  ColorsExercice1.cpp
-  ColorsExercice2.cpp
-  ColorsExercice3.cpp
-  CoordinateSystemExample.cpp
-  HelloRectangle.cpp
-  HelloTriangle.cpp
-  HelloTriangle_3.cpp
-  HelloTriangle_1.cpp
-  HelloTriangle_2.cpp
-  HelloWindow.cpp
-  LightCastersExample.cpp
+﻿  LightCastersExample.cpp
 c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
   d:\opengl learning\external libs\glad\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
 d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(533): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
@@ -26,9 +6,7 @@ d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(749):
 d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(1027): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(1306): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(1583): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  LightingMapsExample.cpp
-c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
-  d:\opengl learning\external libs\glad\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
+  Shader.cpp
   main.cpp
 c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
   d:\opengl learning\external libs\glad\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
@@ -37,44 +15,5 @@ d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(749):
 d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(1027): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(1306): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(1583): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  MaterialExample.cpp
-c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
-  d:\opengl learning\external libs\glad\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
-d:\opengl learning\openglcourseapp\openglcourseapp\materialexample.cpp(306): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-d:\opengl learning\openglcourseapp\openglcourseapp\materialexample.cpp(307): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-d:\opengl learning\openglcourseapp\openglcourseapp\materialexample.cpp(308): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-  SceneOrigin.cpp
-  SceneOriginTest.cpp
-  Shader.cpp
-  ShaderExample.cpp
   Generating Code...
-  Compiling...
-  ShaderExercice1.cpp
-d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice1.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  ShaderExercice2.cpp
-d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice2.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  ShaderExercice3.cpp
-d:\opengl learning\openglcourseapp\openglcourseapp\shaderexercice3.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  stb_image.cpp
-  TextureExample.cpp
-  TextureExercice1.cpp
-  TextureExercice2.cpp
-  TextureExercice3.cpp
-  TextureLoader.cpp
-  TransformationExample.cpp
-  TransformationExercice.cpp
-  Generating Code...
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   OpenGlCourseApp.vcxproj -> D:\OPENGL LEARNING\OpenGlCourseApp\Debug\OpenGlCourseApp.exe

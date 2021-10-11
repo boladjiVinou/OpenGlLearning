@@ -13,6 +13,6 @@
 int main() 
 {
 	LightCastersExample example;
-	example.bioChemicalLab();
+	example.horror();
 	return 0;
 }
