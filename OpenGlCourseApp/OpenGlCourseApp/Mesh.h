@@ -1,3 +1,4 @@
+#pragma once
 #include <vector>
 #include "Shader.h";
 #include <string>;
@@ -10,6 +11,7 @@ public:
 	struct Texture {
 		unsigned int id;
 		std::string type;
+		string path;
 	};
 
 	struct Vertex {

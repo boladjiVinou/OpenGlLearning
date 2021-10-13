@@ -162,13 +162,16 @@
     <ClCompile Include="LightCastersExample.cpp">
       <Filter>Source Files\LightCasters</Filter>
     </ClCompile>
-    <ClCompile Include="Vertex.cpp">
-      <Filter>Source Files\ModelLoading</Filter>
-    </ClCompile>
-    <ClCompile Include="Texture.cpp">
+    <ClCompile Include="Mesh.h">
       <Filter>Source Files\ModelLoading</Filter>
     </ClCompile>
     <ClCompile Include="Mesh.cpp">
+      <Filter>Source Files\ModelLoading</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Source Files\ModelLoading</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelLoadingExample.cpp">
       <Filter>Source Files\ModelLoading</Filter>
     </ClCompile>
   </ItemGroup>
@@ -262,6 +265,12 @@
     </ClInclude>
     <ClInclude Include="TransformationExample.h">
       <Filter>Source Files\Transformations</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Source Files\ModelLoading</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelLoadingExample.h">
+      <Filter>Source Files\ModelLoading</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
