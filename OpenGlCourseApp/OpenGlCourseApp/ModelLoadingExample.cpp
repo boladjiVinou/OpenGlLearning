@@ -1,5 +1,6 @@
 #include "ModelLoadingExample.h";
 #include "Model.h";
+#include "SceneOrigin.h";
 void ModelLoadingExample::framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
 	glViewport(0, 0, width, height);
@@ -48,10 +49,10 @@ int ModelLoadingExample::run()
 	Model backPack("./Model/backpack/backpack.obj");
 	glm::mat4 model = glm::mat4(1.0f);
 	model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
-	model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
+	model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));	// it's a bit too big for our scene, so scale it down
 	vertexShader.setMat4("model", model);
 	
-	
+	SceneOrigin origin;
 
 	glEnable(GL_DEPTH_TEST);
 	while (!glfwWindowShouldClose(window))
@@ -61,6 +62,8 @@ int ModelLoadingExample::run()
 		glClear(GL_COLOR_BUFFER_BIT);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		cam.processInput(window);
+
+		origin.displayOrigin(cam.getViewMatrix(), cam.getProjection());
 
 		vertexShader.setMat4("view", cam.getViewMatrix());
 		vertexShader.setMat4("projection", cam.getProjection());

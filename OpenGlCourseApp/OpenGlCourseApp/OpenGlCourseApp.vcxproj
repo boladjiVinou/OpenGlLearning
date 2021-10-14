@@ -72,23 +72,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>D:\OPENGL LEARNING\External Libs\glad\include;D:\OPENGL LEARNING\External Libs;$(LibraryPath)</LibraryPath>
-    <IncludePath>D:\OPENGL LEARNING\External Libs\glad\include;D:\OPENGL LEARNING\External Libs;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)/../External Libs/glad/include;$(SolutionDir)/../External Libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)/../External Libs/glad/include;$(SolutionDir)/../External Libs;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>D:\OPENGL LEARNING\External Libs\glad\include;D:\OPENGL LEARNING\External Libs;$(LibraryPath)</LibraryPath>
-    <IncludePath>D:\OPENGL LEARNING\External Libs\glad\include;D:\OPENGL LEARNING\External Libs;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)/../External Libs/glad/include;$(SolutionDir)/../External Libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)/../External Libs/glad/include;$(SolutionDir)/../External Libs;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <LibraryPath>D:\OPENGL LEARNING\External Libs\glad\include;D:\OPENGL LEARNING\External Libs;$(LibraryPath)</LibraryPath>
-    <IncludePath>D:\OPENGL LEARNING\External Libs\glad\include;D:\OPENGL LEARNING\External Libs;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)/../External Libs/glad/include;$(SolutionDir)/../External Libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)/../External Libs/glad/include;$(SolutionDir)/../External Libs;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <LibraryPath>D:\OPENGL LEARNING\External Libs\glad\include;D:\OPENGL LEARNING\External Libs;$(LibraryPath)</LibraryPath>
-    <IncludePath>D:\OPENGL LEARNING\External Libs\glad\include;D:\OPENGL LEARNING\External Libs;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)/../External Libs/glad/include;$(SolutionDir)/../External Libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)/../External Libs/glad/include;$(SolutionDir)/../External Libs;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -99,12 +99,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)/../External Libs/GLEW/include;$(SolutionDir)/../External Libs/GLFW/include;$(SolutionDir)/../External Libs/GLM;$(SolutionDir)/../External Libs/assimp/include/assimp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/../External Libs/GLEW/include;$(SolutionDir)/../External Libs/GLFW/include;$(SolutionDir)/../External Libs/GLM;$(SolutionDir)/../External Libs/assimp/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)/../External Libs/GLEW/lib/Release/Win32;$(SolutionDir)/../External Libs/GLFW/lib-vc2017;$(SolutionDir)/../External Libs/assimp/lib32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)/../External Libs/GLEW/lib/Release/Win32;$(SolutionDir)/../External Libs/GLFW/lib-vc2017;$(SolutionDir)/../External Libs/assimp/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -117,12 +117,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)/../External Libs/GLEW/include;$(SolutionDir)/../External Libs/GLFW/include;$(SolutionDir)/../External Libs/GLM;$(SolutionDir)/../External Libs/assimp/include/assimp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/../External Libs/GLEW/include;$(SolutionDir)/../External Libs/GLFW/include;$(SolutionDir)/../External Libs/GLM;$(SolutionDir)/../External Libs/assimp/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)/../External Libs/GLEW/lib/Release/Win32;$(SolutionDir)/../External Libs/GLFW/lib-vc2017;$(SolutionDir)/../External Libs/assimp/lib32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)/../External Libs/GLEW/lib/Release/Win32;$(SolutionDir)/../External Libs/GLFW/lib-vc2017;$(SolutionDir)/../External Libs/assimp/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -137,14 +137,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)/../External Libs/GLEW/include;$(SolutionDir)/../External Libs/GLFW/include;$(SolutionDir)/../External Libs/GLM;$(SolutionDir)/../External Libs/assimp/include/assimp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/../External Libs/GLEW/include;$(SolutionDir)/../External Libs/GLFW/include;$(SolutionDir)/../External Libs/GLM;$(SolutionDir)/../External Libs/assimp/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)/../External Libs/GLEW/lib/Release/Win32;$(SolutionDir)/../External Libs/GLFW/lib-vc2017;$(SolutionDir)/../External Libs/assimp/lib32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)/../External Libs/GLEW/lib/Release/Win32;$(SolutionDir)/../External Libs/GLFW/lib-vc2017;$(SolutionDir)/../External Libs/assimp/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -159,14 +159,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)/../External Libs/GLEW/include;$(SolutionDir)/../External Libs/GLFW/include;$(SolutionDir)/../External Libs/GLM;$(SolutionDir)/../External Libs/assimp/include/assimp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/../External Libs/GLEW/include;$(SolutionDir)/../External Libs/GLFW/include;$(SolutionDir)/../External Libs/GLM;$(SolutionDir)/../External Libs/assimp/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)/../External Libs/GLEW/lib/Release/Win32;$(SolutionDir)/../External Libs/GLFW/lib-vc2017;$(SolutionDir)/../External Libs/assimp/lib32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)/../External Libs/GLEW/lib/Release/Win32;$(SolutionDir)/../External Libs/GLFW/lib-vc2017;$(SolutionDir)/../External Libs/assimp/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

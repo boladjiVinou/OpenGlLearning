@@ -1,1 +1,10 @@
-﻿
+﻿  ModelLoadingExample.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\modelloadingexample.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\opengl learning\openglcourseapp\openglcourseapp\modelloadingexample.cpp(2): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\opengl learning\openglcourseapp\openglcourseapp\model.h(6): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\opengl learning\openglcourseapp\openglcourseapp\mesh.h(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\opengl learning\openglcourseapp\openglcourseapp\mesh.h(4): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\opengl learning\openglcourseapp\openglcourseapp\mesh.h(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\opengl learning\openglcourseapp\openglcourseapp\mesh.h(6): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\opengl learning\openglcourseapp\openglcourseapp\modelloadingexample.cpp(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  OpenGlCourseApp.vcxproj -> D:\OPENGL LEARNING\OpenGlCourseApp\Debug\OpenGlCourseApp.exe

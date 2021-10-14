@@ -1,8 +1,8 @@
 #pragma once
-#include <assimp/include/assimp/Importer.hpp>
-#include <assimp/include/assimp/scene.h>
-#include <assimp/include/assimp/postprocess.h>
-#include <assimp/include/assimp/material.h>
+#include <assimp/include/Importer.hpp>
+#include <assimp/include/scene.h>
+#include <assimp/include/postprocess.h>
+#include <assimp/include/material.h>
 #include "Mesh.h";
 
 using namespace std;
