@@ -11,14 +11,15 @@ class Model
 public:
 	Model(string path)
 	{
-		loadModel(path);
+		this->path = path;
 	}
+	void loadModel();
 	void Draw(Shader &shader);
 private:
 	// model data
 	vector<Mesh> meshes;
 	string directory;
-	void loadModel(string path);
+	string path;
 	void processNode(aiNode *node, const aiScene *scene);
 	Mesh processMesh(aiMesh *mesh, const aiScene *scene);
 	vector<Mesh::Texture> loadMaterialTextures(aiMaterial *mat, aiTextureType type, string typeName);

@@ -8,7 +8,7 @@ void Model:: Draw(Shader &shader)
 		meshes[i].Draw(shader);
 }
 
-void Model::loadModel(string path) 
+void Model::loadModel() 
 {
 	Assimp::Importer importer;
 	const aiScene *scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
@@ -85,7 +85,7 @@ vector<Mesh::Texture> Model::loadMaterialTextures(aiMaterial *mat, aiTextureType
 		aiString str;
 		mat->GetTexture(type, i, &str);
 		TextureLoader TextureLoader;
-		string dir = directory + "\\" + str.C_Str();
+		string dir = directory + "/" + str.C_Str();
 		auto isAlreadyLoaded = [dir](Mesh::Texture pTexture) { return pTexture.path == dir; };
 		if (std::find_if(textures.begin(), textures.end(), isAlreadyLoaded) == textures.end()) {
 			{
