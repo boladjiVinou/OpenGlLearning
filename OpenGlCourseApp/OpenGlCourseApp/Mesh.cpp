@@ -6,7 +6,7 @@ Mesh::Mesh(const vector<Vertex> vertices, vector<unsigned int> indices, vector<T
 void Mesh::Draw(Shader &shader) 
 {
 	// draw mesh
-	
+	glBindVertexArray(VAO);
 	unsigned int diffuseNr = 1;
 	unsigned int specularNr = 1;
 	for (unsigned int i = 0; i < textures.size(); i++)
@@ -22,10 +22,8 @@ void Mesh::Draw(Shader &shader)
 		shader.setInt(name + number, i);
 		glBindTexture(GL_TEXTURE_2D, textures[i].id);
 	}
-	glActiveTexture(GL_TEXTURE0);
-	glBindVertexArray(VAO);
+	
 	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
-	glBindVertexArray(0);
 }
 void Mesh::setupMesh() 
 {

@@ -42,12 +42,7 @@ int ModelLoadingExample::run()
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 
 	Model backPack("./Model/backpack/backpack.obj");
-	bool modelLoaded = false;
-
-	std::thread modelLoadingThread([&backPack, &modelLoaded] {
-		backPack.loadModel();
-		modelLoaded = true;
-	});
+	backPack.loadModel();
 
 	Shader vertexShader = Shader(vertexShaderSourceCode, GL_VERTEX_SHADER);
 	unsigned int shaderProgram = glCreateProgram();
@@ -81,15 +76,12 @@ int ModelLoadingExample::run()
 
 		origin.displayOrigin(cam.getViewMatrix(), cam.getProjection());
 
-		if (modelLoaded) 
-		{
-			vertexShader.useProgram();
+		vertexShader.useProgram();
 
-			vertexShader.setMat4("view", cam.getViewMatrix());
-			vertexShader.setMat4("projection", cam.getProjection());
+		vertexShader.setMat4("view", cam.getViewMatrix());
+		vertexShader.setMat4("projection", cam.getProjection());
 
-			backPack.Draw(fragmentShader);
-		}
+		backPack.Draw(fragmentShader);
 		
 
 		glfwSwapBuffers(window);
