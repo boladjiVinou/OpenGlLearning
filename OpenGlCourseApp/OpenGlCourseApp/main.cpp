@@ -1,9 +1,8 @@
 #include <iostream>
-#include "ModelLoadingExample.h"
-#include "LightCastersExample.h";
+#include "LightCastersExample.h"
 int main() 
 {
-	ModelLoadingExample example;
-	example.run();
+	LightCastersExample example;
+	example.desert();
 	return 0;
 }

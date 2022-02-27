@@ -132,9 +132,6 @@ int  LightCastersExample::run()
 
 	glBindVertexArray(VAO);
 
-	TCHAR buffer[MAX_PATH] = { 0 };
-	GetModuleFileName(NULL, buffer, MAX_PATH);
-
 	Shader vertexShader = Shader(vertexShaderSource, GL_VERTEX_SHADER);
 	unsigned int shaderProgram = glCreateProgram();
 	vertexShader.AttachShaderTo(shaderProgram);

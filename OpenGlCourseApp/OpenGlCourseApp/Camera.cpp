@@ -86,6 +86,10 @@ void Camera:: mouse_callback(GLFWwindow* window, double xpos, double ypos)
 	yoffset *= sensitivity;
 	yaw += xoffset;
 	pitch += yoffset;
+	if (pitch > 89.0f)
+		pitch = 89.0f;
+	if (pitch < -89.0f)
+		pitch = -89.0f;
 }
 
 glm::mat4 Camera::myLookat()

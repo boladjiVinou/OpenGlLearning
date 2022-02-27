@@ -13,56 +13,65 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\HelloTriangle">
-      <UniqueIdentifier>{0ef9dc57-357d-4a91-a04d-af29893a3b2e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\HelloTriangle\HelloTriangleExercices">
-      <UniqueIdentifier>{9120cba1-7a57-4b38-8547-4863ddbd039f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Shaders">
-      <UniqueIdentifier>{5c3b690d-2237-42f7-bfd6-b58432183526}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Shaders\ShaderExercices">
-      <UniqueIdentifier>{0cb87ef2-3f0a-48fe-99be-1a9a6434fd35}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Textures">
-      <UniqueIdentifier>{9a83fe7b-f568-4ba4-b72b-476a651c212a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Textures\TexturesExercices">
-      <UniqueIdentifier>{7467b776-24a2-445c-8bd2-758e924e7f5b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Transformations">
-      <UniqueIdentifier>{49883640-a9ed-4888-b28d-055eec574c5a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Transformations\TransformationsExercices">
-      <UniqueIdentifier>{e6ae918b-6405-4d0d-95cb-cf8a492f6f41}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\CoordinateSystems">
-      <UniqueIdentifier>{03d6a4c6-afd5-4c14-8335-4b4ce757b98b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Camera">
-      <UniqueIdentifier>{ca8b029c-d68e-4d44-9e92-0cc4b00a330f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Colors">
-      <UniqueIdentifier>{909736a3-5f29-42fa-88da-8153ec93c91f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Colors\ColorsExercices">
-      <UniqueIdentifier>{23181fe2-ebc3-48cb-beff-057761c0faff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\SceneOrigin">
-      <UniqueIdentifier>{dfd64331-1e11-469e-b737-499636034260}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Materials">
-      <UniqueIdentifier>{5a772640-0539-4354-8fe1-9c67d54e4f17}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\LightingMaps">
-      <UniqueIdentifier>{262a00f7-5975-437e-9f37-450cf48506ea}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\LightCasters">
-      <UniqueIdentifier>{81ef7605-73c1-4430-95a3-5bbbb33ec7ee}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\ModelLoading">
       <UniqueIdentifier>{a899fb91-552d-44d4-ae3b-48154a6d98e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GettingStarted">
+      <UniqueIdentifier>{4217d2ec-83a5-43c3-b691-20569b8930ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GettingStarted\Shaders">
+      <UniqueIdentifier>{5c3b690d-2237-42f7-bfd6-b58432183526}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GettingStarted\Shaders\ShaderExercices">
+      <UniqueIdentifier>{0cb87ef2-3f0a-48fe-99be-1a9a6434fd35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GettingStarted\Textures">
+      <UniqueIdentifier>{9a83fe7b-f568-4ba4-b72b-476a651c212a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GettingStarted\Textures\TexturesExercices">
+      <UniqueIdentifier>{7467b776-24a2-445c-8bd2-758e924e7f5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GettingStarted\SceneOrigin">
+      <UniqueIdentifier>{dfd64331-1e11-469e-b737-499636034260}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GettingStarted\HelloTriangle">
+      <UniqueIdentifier>{0ef9dc57-357d-4a91-a04d-af29893a3b2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GettingStarted\HelloTriangle\HelloTriangleExercices">
+      <UniqueIdentifier>{9120cba1-7a57-4b38-8547-4863ddbd039f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GettingStarted\CoordinateSystems">
+      <UniqueIdentifier>{03d6a4c6-afd5-4c14-8335-4b4ce757b98b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GettingStarted\Camera">
+      <UniqueIdentifier>{ca8b029c-d68e-4d44-9e92-0cc4b00a330f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lighting">
+      <UniqueIdentifier>{3fd0cfd3-fe03-4864-8d13-30a95b8a7639}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lighting\LightCasters">
+      <UniqueIdentifier>{81ef7605-73c1-4430-95a3-5bbbb33ec7ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lighting\LightingMaps">
+      <UniqueIdentifier>{262a00f7-5975-437e-9f37-450cf48506ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lighting\Colors">
+      <UniqueIdentifier>{909736a3-5f29-42fa-88da-8153ec93c91f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lighting\Colors\ColorsExercices">
+      <UniqueIdentifier>{23181fe2-ebc3-48cb-beff-057761c0faff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lighting\Materials">
+      <UniqueIdentifier>{5a772640-0539-4354-8fe1-9c67d54e4f17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GettingStarted\Transformations">
+      <UniqueIdentifier>{49883640-a9ed-4888-b28d-055eec574c5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GettingStarted\Transformations\TransformationsExercices">
+      <UniqueIdentifier>{e6ae918b-6405-4d0d-95cb-cf8a492f6f41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AdvancedOpenGl">
+      <UniqueIdentifier>{8c0550d2-e7c0-42ea-802e-8f28ccdf123c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -73,94 +82,94 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="HelloTriangle_1.cpp">
-      <Filter>Source Files\HelloTriangle\HelloTriangleExercices</Filter>
+      <Filter>Source Files\GettingStarted\HelloTriangle\HelloTriangleExercices</Filter>
     </ClCompile>
     <ClCompile Include="HelloTriangle_2.cpp">
-      <Filter>Source Files\HelloTriangle\HelloTriangleExercices</Filter>
+      <Filter>Source Files\GettingStarted\HelloTriangle\HelloTriangleExercices</Filter>
     </ClCompile>
     <ClCompile Include="HelloTriangle_3.cpp">
-      <Filter>Source Files\HelloTriangle\HelloTriangleExercices</Filter>
+      <Filter>Source Files\GettingStarted\HelloTriangle\HelloTriangleExercices</Filter>
     </ClCompile>
     <ClCompile Include="HelloWindow.cpp">
-      <Filter>Source Files\HelloTriangle</Filter>
+      <Filter>Source Files\GettingStarted\HelloTriangle</Filter>
     </ClCompile>
     <ClCompile Include="HelloTriangle.cpp">
-      <Filter>Source Files\HelloTriangle</Filter>
+      <Filter>Source Files\GettingStarted\HelloTriangle</Filter>
     </ClCompile>
     <ClCompile Include="HelloRectangle.cpp">
-      <Filter>Source Files\HelloTriangle</Filter>
+      <Filter>Source Files\GettingStarted\HelloTriangle</Filter>
     </ClCompile>
     <ClCompile Include="ShaderExample.cpp">
-      <Filter>Source Files\Shaders</Filter>
+      <Filter>Source Files\GettingStarted\Shaders</Filter>
     </ClCompile>
     <ClCompile Include="Shader.cpp">
-      <Filter>Source Files\Shaders</Filter>
+      <Filter>Source Files\GettingStarted\Shaders</Filter>
     </ClCompile>
     <ClCompile Include="ShaderExercice1.cpp">
-      <Filter>Source Files\Shaders\ShaderExercices</Filter>
+      <Filter>Source Files\GettingStarted\Shaders\ShaderExercices</Filter>
     </ClCompile>
     <ClCompile Include="ShaderExercice2.cpp">
-      <Filter>Source Files\Shaders\ShaderExercices</Filter>
+      <Filter>Source Files\GettingStarted\Shaders\ShaderExercices</Filter>
     </ClCompile>
     <ClCompile Include="ShaderExercice3.cpp">
-      <Filter>Source Files\Shaders\ShaderExercices</Filter>
+      <Filter>Source Files\GettingStarted\Shaders\ShaderExercices</Filter>
     </ClCompile>
     <ClCompile Include="TextureExample.cpp">
-      <Filter>Source Files\Textures</Filter>
+      <Filter>Source Files\GettingStarted\Textures</Filter>
     </ClCompile>
     <ClCompile Include="stb_image.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="TextureExercice1.cpp">
-      <Filter>Source Files\Textures\TexturesExercices</Filter>
+      <Filter>Source Files\GettingStarted\Textures\TexturesExercices</Filter>
     </ClCompile>
     <ClCompile Include="TextureExercice2.cpp">
-      <Filter>Source Files\Textures\TexturesExercices</Filter>
+      <Filter>Source Files\GettingStarted\Textures\TexturesExercices</Filter>
     </ClCompile>
     <ClCompile Include="TextureExercice3.cpp">
-      <Filter>Source Files\Textures\TexturesExercices</Filter>
+      <Filter>Source Files\GettingStarted\Textures\TexturesExercices</Filter>
     </ClCompile>
     <ClCompile Include="TransformationExample.cpp">
-      <Filter>Source Files\Transformations</Filter>
+      <Filter>Source Files\GettingStarted\Transformations</Filter>
     </ClCompile>
     <ClCompile Include="TransformationExercice.cpp">
-      <Filter>Source Files\Transformations\TransformationsExercices</Filter>
+      <Filter>Source Files\GettingStarted\Transformations\TransformationsExercices</Filter>
     </ClCompile>
     <ClCompile Include="CoordinateSystemExample.cpp">
-      <Filter>Source Files\CoordinateSystems</Filter>
+      <Filter>Source Files\GettingStarted\CoordinateSystems</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>Source Files\Camera</Filter>
+      <Filter>Source Files\GettingStarted\Camera</Filter>
     </ClCompile>
     <ClCompile Include="ColorsExample.cpp">
-      <Filter>Source Files\Colors</Filter>
+      <Filter>Source Files\Lighting\Colors</Filter>
     </ClCompile>
     <ClCompile Include="ColorsExercice1.cpp">
-      <Filter>Source Files\Colors\ColorsExercices</Filter>
+      <Filter>Source Files\Lighting\Colors\ColorsExercices</Filter>
     </ClCompile>
     <ClCompile Include="SceneOrigin.cpp">
-      <Filter>Source Files\SceneOrigin</Filter>
+      <Filter>Source Files\GettingStarted\SceneOrigin</Filter>
     </ClCompile>
     <ClCompile Include="SceneOriginTest.cpp">
-      <Filter>Source Files\SceneOrigin</Filter>
+      <Filter>Source Files\GettingStarted\SceneOrigin</Filter>
     </ClCompile>
     <ClCompile Include="ColorsExercice2.cpp">
-      <Filter>Source Files\Colors\ColorsExercices</Filter>
+      <Filter>Source Files\Lighting\Colors\ColorsExercices</Filter>
     </ClCompile>
     <ClCompile Include="ColorsExercice3.cpp">
-      <Filter>Source Files\Colors\ColorsExercices</Filter>
+      <Filter>Source Files\Lighting\Colors\ColorsExercices</Filter>
     </ClCompile>
     <ClCompile Include="MaterialExample.cpp">
-      <Filter>Source Files\Materials</Filter>
+      <Filter>Source Files\Lighting\Materials</Filter>
     </ClCompile>
     <ClCompile Include="LightingMapsExample.cpp">
-      <Filter>Source Files\LightingMaps</Filter>
+      <Filter>Source Files\Lighting\LightingMaps</Filter>
     </ClCompile>
     <ClCompile Include="TextureLoader.cpp">
-      <Filter>Source Files\Textures</Filter>
+      <Filter>Source Files\GettingStarted\Textures</Filter>
     </ClCompile>
     <ClCompile Include="LightCastersExample.cpp">
-      <Filter>Source Files\LightCasters</Filter>
+      <Filter>Source Files\Lighting\LightCasters</Filter>
     </ClCompile>
     <ClCompile Include="Mesh.h">
       <Filter>Source Files\ModelLoading</Filter>
@@ -174,103 +183,115 @@
     <ClCompile Include="ModelLoadingExample.cpp">
       <Filter>Source Files\ModelLoading</Filter>
     </ClCompile>
+    <ClCompile Include="DepthTesting.cpp">
+      <Filter>Source Files\AdvancedOpenGl</Filter>
+    </ClCompile>
+    <ClCompile Include="StencilTesting.cpp">
+      <Filter>Source Files\AdvancedOpenGl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stb_image.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>Source Files\Camera</Filter>
+      <Filter>Source Files\GettingStarted\Camera</Filter>
     </ClInclude>
     <ClInclude Include="ColorsExercice1.h">
-      <Filter>Source Files\Colors\ColorsExercices</Filter>
+      <Filter>Source Files\Lighting\Colors\ColorsExercices</Filter>
     </ClInclude>
     <ClInclude Include="ColorsExercice2.h">
-      <Filter>Source Files\Colors\ColorsExercices</Filter>
+      <Filter>Source Files\Lighting\Colors\ColorsExercices</Filter>
     </ClInclude>
     <ClInclude Include="ColorsExercice3.h">
-      <Filter>Source Files\Colors\ColorsExercices</Filter>
+      <Filter>Source Files\Lighting\Colors\ColorsExercices</Filter>
     </ClInclude>
     <ClInclude Include="ColorsExample.h">
-      <Filter>Source Files\Colors</Filter>
+      <Filter>Source Files\Lighting\Colors</Filter>
     </ClInclude>
     <ClInclude Include="CoordinateSystemExample.h">
-      <Filter>Source Files\CoordinateSystems</Filter>
+      <Filter>Source Files\GettingStarted\CoordinateSystems</Filter>
     </ClInclude>
     <ClInclude Include="HelloTriangle_1.h">
-      <Filter>Source Files\HelloTriangle\HelloTriangleExercices</Filter>
+      <Filter>Source Files\GettingStarted\HelloTriangle\HelloTriangleExercices</Filter>
     </ClInclude>
     <ClInclude Include="HelloTriangle_2.h">
-      <Filter>Source Files\HelloTriangle\HelloTriangleExercices</Filter>
+      <Filter>Source Files\GettingStarted\HelloTriangle\HelloTriangleExercices</Filter>
     </ClInclude>
     <ClInclude Include="HelloTriangle_3.h">
-      <Filter>Source Files\HelloTriangle\HelloTriangleExercices</Filter>
+      <Filter>Source Files\GettingStarted\HelloTriangle\HelloTriangleExercices</Filter>
     </ClInclude>
     <ClInclude Include="HelloRectangle.h">
-      <Filter>Source Files\HelloTriangle</Filter>
+      <Filter>Source Files\GettingStarted\HelloTriangle</Filter>
     </ClInclude>
     <ClInclude Include="HelloTriangle.h">
-      <Filter>Source Files\HelloTriangle</Filter>
+      <Filter>Source Files\GettingStarted\HelloTriangle</Filter>
     </ClInclude>
     <ClInclude Include="HelloWindow.h">
-      <Filter>Source Files\HelloTriangle</Filter>
+      <Filter>Source Files\GettingStarted\HelloTriangle</Filter>
     </ClInclude>
     <ClInclude Include="LightCastersExample.h">
-      <Filter>Source Files\LightCasters</Filter>
+      <Filter>Source Files\Lighting\LightCasters</Filter>
     </ClInclude>
     <ClInclude Include="LightingMapsExample.h">
-      <Filter>Source Files\LightingMaps</Filter>
+      <Filter>Source Files\Lighting\LightingMaps</Filter>
     </ClInclude>
     <ClInclude Include="MaterialExample.h">
-      <Filter>Source Files\Materials</Filter>
+      <Filter>Source Files\Lighting\Materials</Filter>
     </ClInclude>
     <ClInclude Include="SceneOrigin.h">
-      <Filter>Source Files\SceneOrigin</Filter>
+      <Filter>Source Files\GettingStarted\SceneOrigin</Filter>
     </ClInclude>
     <ClInclude Include="SceneOriginTest.h">
-      <Filter>Source Files\SceneOrigin</Filter>
+      <Filter>Source Files\GettingStarted\SceneOrigin</Filter>
     </ClInclude>
     <ClInclude Include="Shader.h">
-      <Filter>Source Files\Shaders</Filter>
+      <Filter>Source Files\GettingStarted\Shaders</Filter>
     </ClInclude>
     <ClInclude Include="ShaderExercice1.h">
-      <Filter>Source Files\Shaders\ShaderExercices</Filter>
+      <Filter>Source Files\GettingStarted\Shaders\ShaderExercices</Filter>
     </ClInclude>
     <ClInclude Include="ShaderExercice2.h">
-      <Filter>Source Files\Shaders\ShaderExercices</Filter>
+      <Filter>Source Files\GettingStarted\Shaders\ShaderExercices</Filter>
     </ClInclude>
     <ClInclude Include="ShaderExercice3.h">
-      <Filter>Source Files\Shaders\ShaderExercices</Filter>
+      <Filter>Source Files\GettingStarted\Shaders\ShaderExercices</Filter>
     </ClInclude>
     <ClInclude Include="ShaderExample.h">
-      <Filter>Source Files\Shaders</Filter>
+      <Filter>Source Files\GettingStarted\Shaders</Filter>
     </ClInclude>
     <ClInclude Include="TextureExercice1.h">
-      <Filter>Source Files\Textures\TexturesExercices</Filter>
+      <Filter>Source Files\GettingStarted\Textures\TexturesExercices</Filter>
     </ClInclude>
     <ClInclude Include="TextureExercice2.h">
-      <Filter>Source Files\Textures\TexturesExercices</Filter>
+      <Filter>Source Files\GettingStarted\Textures\TexturesExercices</Filter>
     </ClInclude>
     <ClInclude Include="TextureExercice3.h">
-      <Filter>Source Files\Textures\TexturesExercices</Filter>
+      <Filter>Source Files\GettingStarted\Textures\TexturesExercices</Filter>
     </ClInclude>
     <ClInclude Include="TextureExample.h">
-      <Filter>Source Files\Textures</Filter>
+      <Filter>Source Files\GettingStarted\Textures</Filter>
     </ClInclude>
     <ClInclude Include="TextureLoader.h">
-      <Filter>Source Files\Textures</Filter>
+      <Filter>Source Files\GettingStarted\Textures</Filter>
     </ClInclude>
     <ClInclude Include="TransformationExercice.h">
-      <Filter>Source Files\Transformations\TransformationsExercices</Filter>
+      <Filter>Source Files\GettingStarted\Transformations\TransformationsExercices</Filter>
     </ClInclude>
     <ClInclude Include="TransformationExample.h">
-      <Filter>Source Files\Transformations</Filter>
+      <Filter>Source Files\GettingStarted\Transformations</Filter>
     </ClInclude>
     <ClInclude Include="Model.h">
       <Filter>Source Files\ModelLoading</Filter>
     </ClInclude>
     <ClInclude Include="ModelLoadingExample.h">
       <Filter>Source Files\ModelLoading</Filter>
+    </ClInclude>
+    <ClInclude Include="DepthTesting.h">
+      <Filter>Source Files\AdvancedOpenGl</Filter>
+    </ClInclude>
+    <ClInclude Include="StencilTesting.h">
+      <Filter>Source Files\AdvancedOpenGl</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
