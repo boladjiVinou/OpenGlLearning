@@ -1,4 +1,13 @@
-﻿  main.cpp
+﻿  LightCastersExample.cpp
+d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\program files (x86)\windows kits\10\include\10.0.17763.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
   d:\opengl learning\external libs\glad\include\glad\glad.h(32): note: see previous definition of 'APIENTRY'
+d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(233): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(449): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(727): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(1006): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\opengl learning\openglcourseapp\openglcourseapp\lightcastersexample.cpp(1283): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  LINK : D:\OPENGL LEARNING\OpenGlCourseApp\Debug\OpenGlCourseApp.exe not found or not built by the last incremental link; performing full link
+Debug\Mesh.obj : warning LNK4042: object specified more than once; extras ignored
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   OpenGlCourseApp.vcxproj -> D:\OPENGL LEARNING\OpenGlCourseApp\Debug\OpenGlCourseApp.exe
