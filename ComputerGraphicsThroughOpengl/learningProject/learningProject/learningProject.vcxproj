@@ -163,7 +163,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseView.cpp" />
     <ClCompile Include="learningProject.cpp" />
+    <ClCompile Include="Square.cpp" />
+    <ClCompile Include="ViewHolder.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BaseView.h" />
+    <ClInclude Include="Square.h" />
+    <ClInclude Include="ViewHolder.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
