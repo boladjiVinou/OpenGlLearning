@@ -1,9 +1,0 @@
-﻿  Square.cpp
-d:\opengl learning\computergraphicsthroughopengl\learningproject\learningproject\square.h(2): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  learningProject.cpp
-d:\opengl learning\computergraphicsthroughopengl\learningproject\learningproject\learningproject.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-d:\opengl learning\computergraphicsthroughopengl\learningproject\learningproject\learningproject.cpp(2): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-d:\opengl learning\computergraphicsthroughopengl\learningproject\learningproject\learningproject.cpp(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-d:\opengl learning\computergraphicsthroughopengl\learningproject\learningproject\square.h(2): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Generating Code...
-  learningProject.vcxproj -> D:\OPENGL LEARNING\ComputerGraphicsThroughOpengl\learningProject\Debug\learningProject.exe
