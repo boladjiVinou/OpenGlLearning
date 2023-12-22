@@ -19,15 +19,18 @@ public:
 protected:
 	void virtual drawScene(void);
 	void setup(void);
-private:
-	void resize(int w, int h);
-	void keyInput(unsigned char key, int x, int y);
-	char * _name;
 	double _left;
 	double _right;
 	double _bottom;
 	double _top;
 	double _near;
 	double _far;
+
+	double _initWidth;
+	double _initHeight;
+private:
+	void resize(int w, int h);
+	void keyInput(unsigned char key, int x, int y);
+	char * _name;
 };
 

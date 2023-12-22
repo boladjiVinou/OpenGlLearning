@@ -9,6 +9,8 @@ BaseView::BaseView(char *  name, double left, double right, double bottom, doubl
 	this->_top = top;
 	this->_near = inNear;
 	this->_far = inFar;
+	this->_initWidth = 500;
+	this->_initHeight = 500;
 }
 BaseView::BaseView() 
 {
@@ -21,6 +23,9 @@ BaseView::BaseView()
 	this->_top = 100.0;
 	this->_near = -1.0;
 	this->_far = 1.0;
+
+	this->_initWidth = 500;
+	this->_initHeight = 500;
 }
 BaseView::~BaseView()
 {
@@ -93,7 +98,7 @@ void BaseView::display(int argc, char **argv)
 
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
 
-	glutInitWindowSize(500, 500);
+	glutInitWindowSize(this->_initWidth, this->_initHeight);
 	glutInitWindowPosition(100, 100);
 
 	glutCreateWindow(_name);

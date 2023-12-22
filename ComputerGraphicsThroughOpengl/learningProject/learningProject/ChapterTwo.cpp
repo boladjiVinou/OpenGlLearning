@@ -3,10 +3,10 @@
 
 ChapterTwo::ChapterTwo(char * name, double left, double right, double bottom, double top, double inNear, double inFar) :BaseView(name, left, right, bottom, top, inNear, inFar)
 {
-	
+	this->_initHeight = 250;
 }
 /*
-Exercice 2.1
+**********************************************Exercice 2.1*************************************
 
 a) Lets compute the size and the location of the square
 Shoot:
@@ -84,6 +84,29 @@ width = renderedWidth / 10 = 300 pixels
 height = renderedHeight / 20 = 150 pixels
 x = 1000 / 10 = 100
 y = 4000 /20 =  200
+
+
+***********************************Exercice 2.2******************************************
+a) top right square
+b) bottom left square
+c) centered square, near far have no impact as long as they are different and included in the viewer box
+
+***********************************Exercice 2.3*******************************************
+
+Lets compute the new area
+the view box is 200 * 200 units
+which give us 200/0.02 -> 10000 pixels
+10000 * 10000
+the final window has a size of 500 * 250
+
+so in x we have a scale of 500/10000 = 1/20 
+in y we have a scale of 250 / 10000 = 1/40
+renderedHeight = renderedWidth = 3000 pixels
+
+finalHeight = 3000/40 = 75
+finalWidht = 3000/ 20 = 150
+
+The area is 150*75 = 11250
 
 
 */
