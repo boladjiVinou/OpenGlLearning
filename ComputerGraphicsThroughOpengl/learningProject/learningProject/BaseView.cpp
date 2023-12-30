@@ -62,7 +62,8 @@ void BaseView::resize(int w, int h)
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(_left, _right, _bottom, _top, _near, _far);
+	double tmp = (double)w / h;
+	glOrtho(_left*tmp, _right* tmp, _bottom, _top, _near, _far);
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();

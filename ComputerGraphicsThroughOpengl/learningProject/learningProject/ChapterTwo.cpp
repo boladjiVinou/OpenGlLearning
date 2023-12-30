@@ -4,6 +4,7 @@
 ChapterTwo::ChapterTwo(char * name, double left, double right, double bottom, double top, double inNear, double inFar) :BaseView(name, left, right, bottom, top, inNear, inFar)
 {
 	this->_initHeight = 250;
+	// this->_initWidth = 250;
 }
 /*
 **********************************************Exercice 2.1*************************************
@@ -108,6 +109,15 @@ finalWidht = 3000/ 20 = 150
 
 The area is 150*75 = 11250
 
+**************************************Exercice 2.4***********************
+double tmp = (double)w / h;
+glOrtho(_left*tmp, _right* tmp, _bottom, _top, _near, _far);
+
+**************************************Exercice 2.5 **********************
+
+Our current view is in the plan xy so only x, y coordinates are considered for the display
+
+**************************************Exercice 2.6 *******************************
 
 */
 void ChapterTwo::drawScene(void)
@@ -118,10 +128,10 @@ void ChapterTwo::drawScene(void)
 
 	// Draw a polygon with specified vertices.
 	glBegin(GL_POLYGON);
-	glVertex3f(20.0, 20.0, 0.0);
-	glVertex3f(80.0, 20.0, 0.0);
-	glVertex3f(80.0, 80.0, 0.0);
-	glVertex3f(20.0, 80.0, 0.0);
+	glVertex3f(20.0, 20.0, 0.5);
+	glVertex3f(80.0, 20.0, -0.5);
+	glVertex3f(80.0, 80.0, 0.1);
+	glVertex3f(20.0, 80.0, 0.2);
 	glEnd();
 
 	glFlush();
