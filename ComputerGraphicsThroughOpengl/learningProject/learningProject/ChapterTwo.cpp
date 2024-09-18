@@ -3,7 +3,7 @@
 
 ChapterTwo::ChapterTwo(char * name, double left, double right, double bottom, double top, double inNear, double inFar) :BaseView(name, left, right, bottom, top, inNear, inFar)
 {
-	this->_initHeight = 250;
+    this->_initHeight = 250; // another way to include more stuff in the projection
 	// this->_initWidth = 250;
 }
 /*
@@ -212,6 +212,46 @@ void ChapterTwo::exercice_2_15()
 	glEnd();
 	glFinish();
 }
+void ChapterTwo:: exercice_2_16() 
+{
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	glBegin(GL_POLYGON);
+	glVertex3f(80, 20, 0);
+	glVertex3f(40, 40, 0);
+	glVertex3f(20, 80, 0);
+	glVertex3f(20, 20, 0);
+	glEnd();
+	glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
+	glBegin(GL_POLYGON);
+	glVertex3f(180, 20, 0);
+	glVertex3f(140, 40, 0);
+	glVertex3f(120, 80, 0);
+	glVertex3f(120, 20, 0);
+	glEnd();
+	glFinish();
+	// Opengl use triangle_fan for the filling, thats why we have a different result despite 
+	// specifying the same configuration of vertices, triangle_fan is done from the 1st specified vertice
+}
+void ChapterTwo::exercice_2_17()
+{
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	glBegin(GL_POLYGON);
+	
+
+	glVertex3f(20, 20, 0);
+	glVertex3f(80, 20, 0);
+	glVertex3f(40, 40, 0);
+	glVertex3f(20, 80, 0);
+	
+	glEnd();
+	glFinish();
+	// it exists if the first vertice is glVertex3f(80, 20, 0);
+	// or glVertex3f(20, 80, 0);
+}
+void ChapterTwo::exercice_2_18()
+{
+
+}
 void ChapterTwo::drawScene(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT);
@@ -266,15 +306,6 @@ void ChapterTwo::drawScene(void)
 	glVertex3f(50.0f, 21.0f, 0.0f);
 	glEnd();*/
 	glColor3f(0.5f, 0.5f, 0.0f);
-	/*glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	glBegin(GL_TRIANGLE_STRIP);
-	glVertex3f(10, 90, 0);
-	glVertex3f(10, 10, 0);
-	glVertex3f(35, 75, 0);
-	glVertex3f(30, 20, 0);
-	glVertex3f(90, 90, 0);
-	glVertex3f(80, 40, 0);
-	glEnd();*/
-	exercice_2_15();
+	exercice_2_17();
 	glFlush();
 }
