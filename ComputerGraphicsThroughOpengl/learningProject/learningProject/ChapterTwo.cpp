@@ -250,7 +250,30 @@ void ChapterTwo::exercice_2_17()
 }
 void ChapterTwo::exercice_2_18()
 {
-
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	glBegin(GL_TRIANGLE_STRIP);
+	glVertex3f(10,80,0);
+	glVertex3f(20, 80, 0);
+	glVertex3f(10, 10, 0);
+	glVertex3f(20, 10, 0);
+	glVertex3f(20, 30, 0);
+	glVertex3f(80, 10, 0);
+	glVertex3f(80, 30, 0);
+	glVertex3f(70, 30, 0);
+	glVertex3f(80, 80, 0);
+	glVertex3f(70, 80, 0);
+	glVertex3f(70, 60, 0);
+	glVertex3f(20, 80, 0);
+	glVertex3f(20, 60, 0);
+	glVertex3f(70, 60, 0);
+	glEnd();
+	glBegin(GL_TRIANGLE_STRIP);
+	glVertex3f(40, 60, 0);
+	glVertex3f(50, 60, 0);
+	glVertex3f(40, 30, 0);
+	glVertex3f(50, 30, 0);
+	glEnd();
+	glFinish();
 }
 void ChapterTwo::drawScene(void)
 {
@@ -306,6 +329,6 @@ void ChapterTwo::drawScene(void)
 	glVertex3f(50.0f, 21.0f, 0.0f);
 	glEnd();*/
 	glColor3f(0.5f, 0.5f, 0.0f);
-	exercice_2_17();
+	exercice_2_18();
 	glFlush();
 }
