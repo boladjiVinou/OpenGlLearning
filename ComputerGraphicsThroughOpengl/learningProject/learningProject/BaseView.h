@@ -3,6 +3,7 @@
 #include <GL/glew.h>
 #include <GL/freeglut.h>
 #include "ViewHolder.h"
+#include <functional>
 using namespace std;
 //class BaseView;
 //static BaseView* currentInstance;
@@ -25,7 +26,6 @@ protected:
 	double _top;
 	double _near;
 	double _far;
-
 	double _initWidth;
 	double _initHeight;
 private:

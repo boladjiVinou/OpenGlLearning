@@ -275,6 +275,41 @@ void ChapterTwo::exercice_2_18()
 	glEnd();
 	glFinish();
 }
+
+void ChapterTwo::exercice_2_19()
+{
+	glBegin(GL_LINE_STRIP);
+	double pi = 3.14;
+	double angle = 0;
+	double maxAngle = pi;
+	double radius = 10;
+	double numVertices = 30;
+	double x = 50;
+	double y = 50;
+
+	for (int i = 0; i < 3; i++)
+	{
+		maxAngle = pi;
+		for (int j = 0; j < numVertices; ++j)
+		{
+			glVertex3f(x +radius * cos(angle), y-radius * sin(angle), 0.0);
+			angle += maxAngle / numVertices;
+			radius += 2 / numVertices;
+		}
+		maxAngle = pi;
+		for (int j = 0; j < numVertices; ++j)
+		{
+			angle += maxAngle / numVertices;
+			radius += 3 / numVertices;
+			glVertex3f(x + radius * cos(angle), y - radius * sin(angle), 0.0);
+		}
+
+		angle = 0;
+	}
+	glEnd();
+	glFinish();
+
+}
 void ChapterTwo::drawScene(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT);
@@ -329,6 +364,6 @@ void ChapterTwo::drawScene(void)
 	glVertex3f(50.0f, 21.0f, 0.0f);
 	glEnd();*/
 	glColor3f(0.5f, 0.5f, 0.0f);
-	exercice_2_18();
+	exercice_2_19();
 	glFlush();
 }

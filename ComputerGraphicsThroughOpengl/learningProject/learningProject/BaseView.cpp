@@ -72,7 +72,6 @@ void BaseView::staticResize(int w, int h)
 {
 	ViewHolder::getView()->resize(w, h);
 }
-
 void BaseView::keyInput(unsigned char key, int x, int y)
 {
 	switch (key)

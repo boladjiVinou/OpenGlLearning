@@ -18,16 +18,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="learningProject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BaseView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ViewHolder.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ChapterTwo.cpp">
+    <ClCompile Include="C:\Users\danyv\Downloads\ExperimenterSource\ExperimenterSource\Chapter2\Circle\circle.cpp">
       <Filter>Source Files\ChapterTwo</Filter>
     </ClCompile>
   </ItemGroup>
