@@ -250,6 +250,7 @@ void ChapterTwo::exercice_2_17()
 }
 void ChapterTwo::exercice_2_18()
 {
+	glColor3f(0.5f, 0.5f, 0.0f);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glBegin(GL_TRIANGLE_STRIP);
 	glVertex3f(10,80,0);
@@ -278,6 +279,7 @@ void ChapterTwo::exercice_2_18()
 
 void ChapterTwo::exercice_2_19()
 {
+	glColor3f(0.5f, 0.5f, 0.0f);
 	glBegin(GL_LINE_STRIP);
 	double pi = 3.14;
 	double angle = 0;
@@ -308,6 +310,42 @@ void ChapterTwo::exercice_2_19()
 	}
 	glEnd();
 	glFinish();
+
+}
+void ChapterTwo::exercice_2_20()
+{
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	glColor3f(0.5f, 0.5f, 0.0f);
+	glBegin(GL_POLYGON);
+	double pi = 3.14;
+	double angle = 0;
+	double maxAngle = 2*pi;
+	double radius = 10;
+	double numVertices = 30;
+	double x = 50;
+	double y = 50;
+	for (int j = 0; j < numVertices; ++j)
+	{
+		glVertex3f(x + radius * cos(angle), y + radius * sin(angle), 0.0);
+		angle += maxAngle / numVertices;
+	}
+	glEnd();
+	x = 100;
+	y = 50;
+	angle = 0;
+	glBegin(GL_TRIANGLE_FAN);
+	glVertex3f(x, y, 0);
+	for (int j = 0; j < numVertices; ++j)
+	{
+		glVertex3f(x + radius * cos(angle), y - radius * sin(angle), 0.0);
+		angle += maxAngle / numVertices;
+	}
+	glVertex3f(x + radius * cos(angle), y - radius * sin(angle), 0.0);
+	glEnd();
+	glFinish();
+}
+void ChapterTwo::exercice_2_21()
+{
 
 }
 void ChapterTwo::drawScene(void)
@@ -364,6 +402,6 @@ void ChapterTwo::drawScene(void)
 	glVertex3f(50.0f, 21.0f, 0.0f);
 	glEnd();*/
 	glColor3f(0.5f, 0.5f, 0.0f);
-	exercice_2_19();
+	exercice_2_20();
 	glFlush();
 }

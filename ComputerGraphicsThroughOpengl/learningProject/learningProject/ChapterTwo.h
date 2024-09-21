@@ -11,6 +11,8 @@ public:
 	void exercice_2_17();
 	void exercice_2_18();
 	void exercice_2_19();
+	void exercice_2_20();
+	void exercice_2_21();
 	ChapterTwo(char * name, double left, double right, double bottom, double top, double inNear, double inFar);
 };
 
