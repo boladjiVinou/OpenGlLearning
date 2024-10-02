@@ -1,4 +1,7 @@
 #include "ChapterTwo.h"
+#include <algorithm>
+#include <vector>
+using namespace std;
 
 
 ChapterTwo::ChapterTwo(char * name, double left, double right, double bottom, double top, double inNear, double inFar) :BaseView(name, left, right, bottom, top, inNear, inFar)
@@ -346,7 +349,90 @@ void ChapterTwo::exercice_2_20()
 }
 void ChapterTwo::exercice_2_21()
 {
+	glColor3f(0.5f, 0.5f, 0.0f);
+	double lineNumVertices = 20;
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	glBegin(GL_LINE_STRIP);
+	glVertex3f(75, 5, 0);
+	glVertex3f(65, 20, 0);
+	glVertex3f(65, 25, 0);//
+	/*
+	top part
+	y = (max - x^2)/2
+	slightly move x too
+	bottom part
+	y =( x^2)/6
+	slightly move x too
+	*/
+	double p1[2];
+	p1[0] = 65;
+	p1[1] = 25;
+	double p2[2];
+	p2[0] = 60;
+	p2[1] = 35;
+	drawArc(p1, p2, 6, -3.14/3,15);
+	//glVertex3f(p2[0], p2[1], 0);
+	/*for (int i = 55; i > 66; i++)
+	{
+		glVertex3f(i, 90-pow(i, 2)/2, 0);
+	}*/
 
+	glEnd();
+	glFinish();
+}
+double  ChapterTwo :: distance(const double p1[2], const double p2[2])
+{
+	return sqrt(((p2[0] - p1[0]) * (p2[0] - p1[0])) + ((p2[1] - p1[1]) * (p2[1] - p1[1])));
+}
+void  ChapterTwo::drawArc(const double p1[2], const double p2[2],double height,double phi, int segments)
+{
+/* I read https://stackoverflow.com/questions/44877698/geometry-arc-algorithm
+*/
+	double tmpDistance = distance(p1,p2);
+	if (tmpDistance >= height)
+	{
+		double midPoint[2];
+		midPoint[0] = (p1[0] + p2[0]) / 2;
+		midPoint[1] = (p1[1] + p2[1]) / 2;
+		double direction[2];
+		direction[0] = (p2[0] - p1[0]) / 2;
+		direction[1] = (p2[1] - p1[1] ) / 2;
+		double lengthDirection = sqrt((direction[0] * direction[0]) + (direction[1] * direction[1]));
+		double unitDir[2];
+		unitDir[0] = direction[0] / lengthDirection;
+		unitDir[1] = direction[1] / lengthDirection;
+		double leftPerpendicularVector[2];
+		leftPerpendicularVector[0] = -unitDir[1];
+		leftPerpendicularVector[1] = unitDir[0];
+		double sysAngle = asin((p2[1] - p1[1]) / tmpDistance);
+		double circleCenter[2];
+
+		if (phi == 3.14) 
+		{
+			circleCenter[0] = midPoint[0];
+			circleCenter[1] = midPoint[1];
+		}
+		else 
+		{
+			circleCenter[0] = midPoint[0] + leftPerpendicularVector[0] * lengthDirection/tan(phi/2);
+			circleCenter[1] = midPoint[1] + leftPerpendicularVector[1] * lengthDirection / tan(phi / 2);
+		}
+		double centerToStart[2];
+		centerToStart[0] = p1[0] - circleCenter[0];
+		centerToStart[1] = p1[1] - circleCenter[1];
+		for (int i = 0; i < segments; i++) 
+		{
+			double angle = i * phi / segments;
+			double x = circleCenter[0] + centerToStart[0] * cos(angle) - centerToStart[1] * sin(angle);
+			double y = circleCenter[1] + centerToStart[0] * sin(angle) + centerToStart[1] * cos(angle);
+			glVertex3f(x,y, 0);
+		}
+	}
+	else 
+	{
+		//oops
+		int a = 0;
+	}
 }
 void ChapterTwo::drawScene(void)
 {
@@ -402,6 +488,6 @@ void ChapterTwo::drawScene(void)
 	glVertex3f(50.0f, 21.0f, 0.0f);
 	glEnd();*/
 	glColor3f(0.5f, 0.5f, 0.0f);
-	exercice_2_20();
+	exercice_2_21();
 	glFlush();
 }
