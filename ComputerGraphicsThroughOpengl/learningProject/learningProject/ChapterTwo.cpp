@@ -349,34 +349,42 @@ void ChapterTwo::exercice_2_20()
 }
 void ChapterTwo::exercice_2_21()
 {
-	glColor3f(0.5f, 0.5f, 0.0f);
+	glColor3f(0.0f, 0.7f, 0.0f);
 	double lineNumVertices = 20;
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	glLineWidth(7);
+	// leaf boundary
 	glBegin(GL_LINE_STRIP);
 	glVertex3f(75, 5, 0);
 	glVertex3f(65, 20, 0);
 	glVertex3f(65, 25, 0);//
-	/*
-	top part
-	y = (max - x^2)/2
-	slightly move x too
-	bottom part
-	y =( x^2)/6
-	slightly move x too
-	*/
 	double p1[2];
 	p1[0] = 65;
 	p1[1] = 25;
 	double p2[2];
-	p2[0] = 60;
-	p2[1] = 35;
-	drawArc(p1, p2, 6, -3.14/3,15);
-	//glVertex3f(p2[0], p2[1], 0);
-	/*for (int i = 55; i > 66; i++)
-	{
-		glVertex3f(i, 90-pow(i, 2)/2, 0);
-	}*/
-
+	p2[0] = 75;
+	p2[1] = 75;
+	drawArc(p1, p2, 6, -3.14/1.6,15);
+	p1[0] = 75;
+	p1[1] = 75;
+	p2[0] = 65;
+	p2[1] = 25;
+	drawArc(p1, p2, 6, -3.14 / 1.6, 15);
+	glVertex3f(65, 25, 0);
+	glEnd();
+	//leaf lines
+	glBegin(GL_LINE_STRIP);
+	p1[0] = 75;
+	p1[1] = 75;
+	p2[0] = 65;
+	p2[1] = 25;
+	drawArc(p1, p2, 6, -0.3, 15);
+	glVertex3f(65, 25, 0);
+	glEnd();
+	glLineWidth(4);
+	glBegin(GL_LINE_STRIP);
+	glVertex3f(65, 30, 0);
+	glVertex3f(60, 35, 0);
 	glEnd();
 	glFinish();
 }
@@ -404,7 +412,6 @@ void  ChapterTwo::drawArc(const double p1[2], const double p2[2],double height,d
 		double leftPerpendicularVector[2];
 		leftPerpendicularVector[0] = -unitDir[1];
 		leftPerpendicularVector[1] = unitDir[0];
-		double sysAngle = asin((p2[1] - p1[1]) / tmpDistance);
 		double circleCenter[2];
 
 		if (phi == 3.14) 
@@ -414,7 +421,7 @@ void  ChapterTwo::drawArc(const double p1[2], const double p2[2],double height,d
 		}
 		else 
 		{
-			circleCenter[0] = midPoint[0] + leftPerpendicularVector[0] * lengthDirection/tan(phi/2);
+			circleCenter[0] = midPoint[0] + leftPerpendicularVector[0] * lengthDirection / tan(phi/2);
 			circleCenter[1] = midPoint[1] + leftPerpendicularVector[1] * lengthDirection / tan(phi / 2);
 		}
 		double centerToStart[2];
