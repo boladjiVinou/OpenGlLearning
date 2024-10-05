@@ -352,7 +352,7 @@ void ChapterTwo::exercice_2_21()
 	glColor3f(0.0f, 0.7f, 0.0f);
 	double lineNumVertices = 20;
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	glLineWidth(7);
+	glLineWidth(5);
 	// leaf boundary
 	glBegin(GL_LINE_STRIP);
 	glVertex3f(75, 5, 0);
@@ -381,10 +381,40 @@ void ChapterTwo::exercice_2_21()
 	drawArc(p1, p2, 6, -0.3, 15);
 	glVertex3f(65, 25, 0);
 	glEnd();
-	glLineWidth(4);
+	glLineWidth(3);
+	//left
 	glBegin(GL_LINE_STRIP);
-	glVertex3f(65, 30, 0);
-	glVertex3f(60, 35, 0);
+	glVertex3f(67, 31, 0);
+	glVertex3f(58, 39, 0);
+	glEnd();
+	glBegin(GL_LINE_STRIP);
+	glVertex3f(69, 39, 0);
+	glVertex3f(58, 53, 0);
+	glEnd();
+	glBegin(GL_LINE_STRIP);
+	glVertex3f(72, 52, 0);
+	glVertex3f(62, 63, 0);
+	glEnd();
+	glBegin(GL_LINE_STRIP);
+	glVertex3f(74, 62, 0);
+	glVertex3f(67, 69, 0);
+	glEnd();
+	//right
+	glBegin(GL_LINE_STRIP);
+	glVertex3f(67, 31, 0);
+	glVertex3f(78, 36, 0);
+	glEnd();
+	glBegin(GL_LINE_STRIP);
+	glVertex3f(69.3, 38, 0);
+	glVertex3f(83, 47, 0);
+	glEnd();
+	glBegin(GL_LINE_STRIP);
+	glVertex3f(72, 50, 0);
+	glVertex3f(83, 62, 0);
+	glEnd();
+	glBegin(GL_LINE_STRIP);
+	glVertex3f(74, 61, 0);
+	glVertex3f(80.2, 68.13, 0);
 	glEnd();
 	glFinish();
 }

@@ -5,8 +5,7 @@
 #include "ViewHolder.h"
 #include <functional>
 using namespace std;
-//class BaseView;
-//static BaseView* currentInstance;
+
 class BaseView
 {
 public:
@@ -17,6 +16,7 @@ public:
 	static void staticDraw();
 	static void staticResize(int w, int h);
 	static void staticKeyInput(unsigned char key, int x, int y);
+	static void staticMouseMove(int button, int state, int x, int y);
 protected:
 	void virtual drawScene(void);
 	void setup(void);
