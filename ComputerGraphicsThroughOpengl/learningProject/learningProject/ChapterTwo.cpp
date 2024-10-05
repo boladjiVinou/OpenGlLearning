@@ -1,6 +1,7 @@
 #include "ChapterTwo.h"
 #include <algorithm>
 #include <vector>
+#include <queue>
 using namespace std;
 
 
@@ -471,6 +472,45 @@ void  ChapterTwo::drawArc(const double p1[2], const double p2[2],double height,d
 		int a = 0;
 	}
 }
+void ChapterTwo::exercice_2_22()
+{
+	glClear(GL_COLOR_BUFFER_BIT);
+	glColor3f(1.0f,0.0f,0.0f);
+	drawCircleWithTriangleStrip(50, 50, 30, 100);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	drawCircleWithTriangleStrip(50, 50, 10, 100);
+}
+void ChapterTwo::drawCircleWithTriangleStrip(int x, int y, int radius, int nbSegments)
+{
+	glBegin(GL_TRIANGLE_STRIP);
+	float t = 0;
+	int vCount = 0;
+	for (int i = 0; i < nbSegments; ++i)
+	{
+		++vCount;
+
+		double point[2];
+		if (vCount == 3)
+		{
+			point[0] = x;
+			point[1] = y;
+			vCount = 0;
+		}
+		else
+		{
+			point[0] = x + radius * cos(t);
+			point[1] = y + radius * sin(t);
+
+		}
+		t += 2 * 3.14 / nbSegments;
+		glVertex3f(point[0], point[1], 0.0);
+	}
+	glVertex3f(x + radius * cos(0), y + radius * sin(0), 0.0);
+	glEnd();
+
+	glFinish();
+}
+
 void ChapterTwo::drawScene(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT);
@@ -525,6 +565,6 @@ void ChapterTwo::drawScene(void)
 	glVertex3f(50.0f, 21.0f, 0.0f);
 	glEnd();*/
 	glColor3f(0.5f, 0.5f, 0.0f);
-	exercice_2_21();
+	exercice_2_22();
 	glFlush();
 }
