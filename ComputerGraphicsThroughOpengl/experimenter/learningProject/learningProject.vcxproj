@@ -164,12 +164,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\danyv\Downloads\ExperimenterSource\ExperimenterSource\Chapter2\Circle\circle.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="BaseView.h" />
-    <ClInclude Include="ChapterTwo.h" />
-    <ClInclude Include="ViewHolder.h" />
+    <ClCompile Include="C:\Users\danyv\Downloads\ExperimenterSource\ExperimenterSource\Chapter2\Circle\main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

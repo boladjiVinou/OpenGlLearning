@@ -476,11 +476,11 @@ void ChapterTwo::exercice_2_22()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glColor3f(1.0f,0.0f,0.0f);
-	drawCircleWithTriangleStrip(50, 50, 30, 100);
+	drawCircleWithTriangleStrip(50, 50,0, 30, 100);
 	glColor3f(1.0f, 1.0f, 1.0f);
-	drawCircleWithTriangleStrip(50, 50, 10, 100);
+	drawCircleWithTriangleStrip(50, 50,0, 10, 100);
 }
-void ChapterTwo::drawCircleWithTriangleStrip(int x, int y, int radius, int nbSegments)
+void ChapterTwo::drawCircleWithTriangleStrip(int x, int y, int z, int radius, int nbSegments)
 {
 	glBegin(GL_TRIANGLE_STRIP);
 	float t = 0;
@@ -503,12 +503,40 @@ void ChapterTwo::drawCircleWithTriangleStrip(int x, int y, int radius, int nbSeg
 
 		}
 		t += 2 * 3.14 / nbSegments;
-		glVertex3f(point[0], point[1], 0.0);
+		glVertex3f(point[0], point[1], z);
 	}
-	glVertex3f(x + radius * cos(0), y + radius * sin(0), 0.0);
+	glVertex3f(x + radius * cos(0), y + radius * sin(0), z);
 	glEnd();
 
 	glFinish();
+}
+
+/*
+****************************Exercice 2.23**************************
+Only the first one is affected because only the first one depend on 
+rendering order, the second one depends on z value the order doesnt
+matter because the depth testing is enabled, the 3rd one 'draw' the
+hole by limiting the triangle scopes into an interval, changing the
+order of the points drawing wont change thing either
+*******************************************************************
+*/
+
+void ChapterTwo::exercice_2_24()
+{
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glEnable(GL_DEPTH_TEST);
+
+	glColor3f(0.0f, 1.0f, 0.0f);
+	drawCircleWithTriangleStrip(50, 50, 1, 50, 100);
+	glColor3f(1.0f, 0.0f, 0.0f);
+	drawCircleWithTriangleStrip(50, 50, 2, 40, 100);
+	glColor3f(0.0f, 0.3f, 1.0f);
+	drawCircleWithTriangleStrip(50, 50, 3, 30, 100);
+	glColor3f(1.0f, 1.0f, 0.0f);
+	drawCircleWithTriangleStrip(50, 50, 4, 20, 100);
+	glColor3f(0.5f, 0.0f, 1.0f);
+	drawCircleWithTriangleStrip(50, 50, 5, 10, 100);
+	glDisable(GL_DEPTH_TEST);
 }
 
 void ChapterTwo::drawScene(void)
@@ -565,6 +593,6 @@ void ChapterTwo::drawScene(void)
 	glVertex3f(50.0f, 21.0f, 0.0f);
 	glEnd();*/
 	glColor3f(0.5f, 0.5f, 0.0f);
-	exercice_2_22();
+	exercice_2_24();
 	glFlush();
 }

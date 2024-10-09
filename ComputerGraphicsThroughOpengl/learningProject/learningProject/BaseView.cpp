@@ -123,7 +123,7 @@ void BaseView::display(int argc, char **argv)
 	glutInitContextVersion(4, 3);
 	glutInitContextProfile(GLUT_COMPATIBILITY_PROFILE);
 
-	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
+	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA | GLUT_DEPTH);
 
 	glutInitWindowSize(this->_initWidth, this->_initHeight);
 	glutInitWindowPosition(100, 100);

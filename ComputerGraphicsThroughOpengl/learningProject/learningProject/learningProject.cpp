@@ -6,7 +6,7 @@ int main(int argc, char **argv)
 {
 	std::string title = "ChapterTwo";
 	char *cstr = &title[0];
-	BaseView* currView = new ChapterTwo(cstr,0,100,0,100,-1,1);
+	BaseView* currView = new ChapterTwo(cstr,0,100,0,100,-100,100);
 	currView->display(argc,argv);
 	delete currView;
 }

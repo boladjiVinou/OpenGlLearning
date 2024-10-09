@@ -14,10 +14,11 @@ public:
 	void exercice_2_20();
 	void exercice_2_21();
 	void exercice_2_22();
+	void exercice_2_24();
 	ChapterTwo(char * name, double left, double right, double bottom, double top, double inNear, double inFar);
 private:
 	void drawArc(const double p1[2], const double p2[2], double height, double phi,int segments);
-	void drawCircleWithTriangleStrip(int x, int y, int radius, int nbSegments);
+	void drawCircleWithTriangleStrip(int x, int y, int z, int radius, int nbSegments);
 	double distance(const double p1[2], const double p2[2]);
 };
 

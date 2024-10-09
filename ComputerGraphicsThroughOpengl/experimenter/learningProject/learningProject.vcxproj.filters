@@ -13,24 +13,10 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\ChapterTwo">
-      <UniqueIdentifier>{fc1985a4-95a6-4da2-b64b-aecacceb7227}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\danyv\Downloads\ExperimenterSource\ExperimenterSource\Chapter2\Circle\circle.cpp">
-      <Filter>Source Files\ChapterTwo</Filter>
+    <ClCompile Include="C:\Users\danyv\Downloads\ExperimenterSource\ExperimenterSource\Chapter2\Circle\main.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="BaseView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ViewHolder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ChapterTwo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
