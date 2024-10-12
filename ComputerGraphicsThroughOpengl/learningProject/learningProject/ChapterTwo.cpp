@@ -539,6 +539,27 @@ void ChapterTwo::exercice_2_24()
 	glDisable(GL_DEPTH_TEST);
 }
 
+void ChapterTwo::exercice_2_25()
+{
+	glClear(GL_COLOR_BUFFER_BIT);
+	glBegin(GL_TRIANGLE_FAN);
+	glColor3f(1.0f, 0.0f, 0.0f);
+	float t = 0;
+	int nbSegments = 100;
+	glVertex3f(50, 50, -200);
+	int radius = 40;
+	glVertex3f(50 + radius * cos(0), 50 + radius * sin(0), 0);
+	for (int i = 0; i < nbSegments; ++i)
+	{
+		t += 2 * 3.14 / nbSegments;
+		glVertex3f(50 + radius * cos(t),
+			50 + radius * sin(t), 
+			0);
+	}
+	glEnd();
+	glFinish();
+}
+
 void ChapterTwo::drawScene(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT);
@@ -593,6 +614,6 @@ void ChapterTwo::drawScene(void)
 	glVertex3f(50.0f, 21.0f, 0.0f);
 	glEnd();*/
 	glColor3f(0.5f, 0.5f, 0.0f);
-	exercice_2_24();
+	exercice_2_25();
 	glFlush();
 }
