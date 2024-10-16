@@ -17,6 +17,7 @@ public:
 	void exercice_2_24();
 	void exercice_2_25();
 	void exercice_2_30();
+	void exercice_2_31();
 	ChapterTwo(char * name, double left, double right, double bottom, double top, double inNear, double inFar);
 private:
 	void drawArc(const double p1[2], const double p2[2], double height, double phi,int segments);

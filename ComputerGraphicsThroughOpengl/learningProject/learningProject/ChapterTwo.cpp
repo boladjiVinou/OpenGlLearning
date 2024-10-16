@@ -592,6 +592,25 @@ void ChapterTwo::exercice_2_30()
 	glFinish();
 }
 
+void ChapterTwo::exercice_2_31()
+{
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	glClear(GL_COLOR_BUFFER_BIT);
+	glColor3f(0.0f, 0.0f, 1.0f);
+	glLineWidth(5);
+	glBegin(GL_LINE_STRIP);
+	int nbSegments = 100;
+	double steps = 2 * 3.14 / nbSegments;
+	for (double phase = 0; phase <= 2*3.14; phase += steps)
+	{
+		glVertex3d(50 + 20*cos(phase),50+ 15*sin(phase),0);// if y coef is lower than x coeff the curve is flatten
+
+	}
+	glVertex3d(50 + 20 * cos(0), 50 + 15 * sin(0), 0);
+	glEnd();
+	glFinish();
+}
+
 void ChapterTwo::drawScene(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT);
@@ -646,6 +665,6 @@ void ChapterTwo::drawScene(void)
 	glVertex3f(50.0f, 21.0f, 0.0f);
 	glEnd();*/
 	glColor3f(0.5f, 0.5f, 0.0f);
-	exercice_2_30();
+	exercice_2_31();
 	glFlush();
 }
