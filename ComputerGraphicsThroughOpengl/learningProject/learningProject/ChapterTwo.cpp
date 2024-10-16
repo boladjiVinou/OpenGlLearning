@@ -559,6 +559,38 @@ void ChapterTwo::exercice_2_25()
 	glEnd();
 	glFinish();
 }
+/**********************************Exercice 2.26****************************
+it will coil 10 times
+a revolution cost 2pi
+-10pi<t<10pi
+from 0 to 10pi
+we have 5 revolutions to do in order to reach 10 pi
+from  0 to -10 pi
+we have 5 revolutions to do in order to reach -10 pi
+****************************************************************************
+***********************************Exercice 2.29****************************
+Lets pA and pB being the perspective projections of object A and B on the front face
+in the scene.
+A is discarded if pA < pB if objects are on the same axis
+*/
+
+void ChapterTwo::exercice_2_30()
+{
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	glClear(GL_COLOR_BUFFER_BIT);
+	glColor3f(0.0f, 0.0f, 1.0f);
+	glLineWidth(5);
+	glBegin(GL_LINE_STRIP);
+	int nbSegments = 100;
+	double steps = 2 * 3.14 / nbSegments;
+	for (double phase = -3.14; phase >= -3.14 && phase <= 3.14; phase += steps) 
+	{
+		glVertex3d( (3.14 + phase)*30, (sin(phase)+1.1)*45, 0);
+		
+	}
+	glEnd();
+	glFinish();
+}
 
 void ChapterTwo::drawScene(void)
 {
@@ -614,6 +646,6 @@ void ChapterTwo::drawScene(void)
 	glVertex3f(50.0f, 21.0f, 0.0f);
 	glEnd();*/
 	glColor3f(0.5f, 0.5f, 0.0f);
-	exercice_2_25();
+	exercice_2_30();
 	glFlush();
 }
